@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akshara Vault — Secure Digital Document Management System</title>
+  <meta name="description" content="A secure, quantum-resilient digital document management system for courts, law enforcement, sensitive government archives, and private enterprises.">
+  <link rel="stylesheet" href="style.css?v=2.2">
+</head>
+<body>
+  <!-- ==========================================================================
+       Preloader Overlay: Waits for first hero image to fully load
+       Uses animated dots loader
+       ========================================================================== -->
+  <div id="app-preloader" class="preloader-overlay">
+    <div class="loading-dots-container" role="status" aria-label="Loading">
+      <span class="ui-dot"></span>
+      <span class="ui-dot"></span>
+      <span class="ui-dot"></span>
+      <span class="sr-only">Loading</span>
+    </div>
+  </div>
+
+
+  <!-- ==========================================================================
+       Institutional Top Government / Civic Utility Ribbon
+       ========================================================================== -->
+  <div class="gov-top-banner">
+    <div class="gov-top-container">
+      <div class="gov-top-left">
+        <svg class="indian-flag-icon" width="22" height="15" viewBox="0 0 225 150" xmlns="http://www.w3.org/2000/svg" title="Flag of India">
+          <rect width="225" height="50" fill="#FF9933"/>
+          <rect y="50" width="225" height="50" fill="#FFFFFF"/>
+          <rect y="100" width="225" height="50" fill="#138808"/>
+          <circle cx="112.5" cy="75" r="20" fill="none" stroke="#000080" stroke-width="2.2"/>
+          <circle cx="112.5" cy="75" r="4" fill="#000080"/>
+          <g stroke="#000080" stroke-width="1.3">
+            <line x1="112.5" y1="55" x2="112.5" y2="95"/>
+            <line x1="92.5" y1="75" x2="132.5" y2="75"/>
+            <line x1="98.36" y1="60.86" x2="126.64" y2="89.14"/>
+            <line x1="98.36" y1="89.14" x2="126.64" y2="60.86"/>
+            <line x1="102.16" y1="56.77" x2="122.84" y2="93.23"/>
+            <line x1="107.32" y1="55.34" x2="117.68" y2="94.66"/>
+            <line x1="117.68" y1="55.34" x2="107.32" y2="94.66"/>
+            <line x1="122.84" y1="56.77" x2="102.16" y2="93.23"/>
+            <line x1="126.64" y1="60.86" x2="98.36" y2="89.14"/>
+            <line x1="130.23" y1="64.66" x2="94.77" y2="85.34"/>
+            <line x1="132.16" y1="69.82" x2="92.84" y2="80.18"/>
+            <line x1="132.16" y1="80.18" x2="92.84" y2="69.82"/>
+          </g>
+        </svg>
+        <span>A SOVEREIGN MILITARY-GRADE SECURE DOCUMENT MANAGEMENT SYSTEM</span>
+      </div>
+      <div class="gov-top-right">
+        <div class="status-live-indicator">
+          <span class="status-dot-pulse"></span>
+          <span>DHT CONSENSUS: ACTIVE & SYNCHRONIZED</span>
+        </div>
+        <span style="color: #64748b;">|</span>
+        <span style="color: #cbd5e1; font-weight: 600;">FIPS 197 &amp; AES-256 COMPLIANT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Full-Width Top Navigation
+       Logo Left, Dropdown Menu Items Center, Search/CTA/Login Right
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="nav-container">
+      <!-- Brand Logo Left -->
+      <a href="#hero" class="site-brand">
+        <div class="brand-identity">
+          <span class="brand-name">
+            AKSHARA VAULT
+            
+          </span>
+          <span class="brand-tagline">Secure Document Management System</span>
+        </div>
+      </a>
+
+      <!-- Center Dropdown Menus -->
+      <nav class="site-navigation" aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="#security-pillars" class="nav-link">
+              Solutions <span class="caret-icon"></span>
+            </a>
+            <ul class="nav-dropdown">
+              <li><a href="#sectors" class="dropdown-link">Courts &amp; Judicial Tribunals <span>Evidentiary custody &amp; bench records</span></a></li>
+              <li><a href="#sectors" class="dropdown-link">Law Enforcement &amp; Forensics <span>Chain-of-custody, FIRs &amp; ballistic logs</span></a></li>
+              <li><a href="#sectors" class="dropdown-link">Regulated Enterprises &amp; BFSI <span>Board resolutions, audits &amp; contracts</span></a></li>
+              <li><a href="#sectors" class="dropdown-link">Government Records &amp; Gazettes <span>Official statutory archives &amp; gazettes</span></a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#features" class="nav-link">
+              Architecture <span class="caret-icon"></span>
+            </a>
+            <ul class="nav-dropdown">
+              <li><a href="#security-pillars" class="dropdown-link">Quantum-Safe AES-256 <span>Symmetric zero-knowledge envelope</span></a></li>
+              <li><a href="#dht-inspector" class="dropdown-link">Distributed Hash Tables (DHT) <span>Decentralized tamper-proof integrity</span></a></li>
+              <li><a href="#security-pillars" class="dropdown-link">Role Based Access Control <span>Granular least-privilege matrix</span></a></li>
+              <li><a href="#version-chain" class="dropdown-link">Immutable Version Chains <span>Cryptographically linked parent hashes</span></a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#dht-inspector" class="nav-link">
+              Verify <span class="caret-icon"></span>
+            </a>
+            <ul class="nav-dropdown">
+              <li><a href="#dht-inspector" class="dropdown-link">Ledger Consensus <span>View distributed node state</span></a></li>
+              <li><a href="#dht-inspector" class="dropdown-link">Multi-Ledger Parity <span>Cross-match hashes across 4 ledgers</span></a></li>
+              <li><a href="#audit-trail" class="dropdown-link">Forensic Digital Trail <span>Geolocations, IP logs &amp; access hops</span></a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#compliance" class="nav-link">Compliance</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Right Action Group -->
+      <div class="nav-right-actions">
+        <button class="btn-pill btn-primary trigger-portal-login" id="nav-portal-login-btn">PORTAL LOGIN</button>
+        <button class="mobile-nav-toggle" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       Large Full-Bleed Photographic Hero Banner with Carousel
+       Bold headline overlaid directly on image, short subhead, rounded pill CTA
+       6 Wikimedia images in exact required order
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-carousel">
+
+      <!-- Slide 1: Earth at Night 2012 (India Nightlights) - Must be first -->
+      <div class="hero-slide active" style="background-image: url('https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Earth_at_Night_2012_%28SVS30028_-_nightlights-750m-india%29.png/1920px-Earth_at_Night_2012_%28SVS30028_-_nightlights-750m-india%29.png');">
+        <div class="hero-slide-overlay"></div>
+        <div class="hero-slide-content">
+          <div class="hero-badge-pill">
+            <span class="pill-dot"></span>
+            <span>NATIONAL SECURE ARCHIVE SPECIFICATION</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="title-light">Institutional Trust.</span>
+            <span class="title-bold">Cryptographic Certainty.</span>
+          </h1>
+          <p class="hero-subhead">
+            A sovereign, quantum-resilient digital document management system engineered for high-stakes judicial evidence, law enforcement investigations, and mission-critical enterprise compliance.
+          </p>
+          <div class="hero-actions">
+            <a href="#dht-inspector" class="btn-pill btn-primary">INSPECT HASH LEDGER</a>
+            <a href="#dht-inspector" class="btn-pill btn-pill-outline-white">INSPECT HASH TABLE</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: View of Lok Sabha Chamber, New Delhi -->
+      <div class="hero-slide" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/db/View_of_Lok_Sabha_chamber_in_the_New_Parliament_building%2C_New_Delhi.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=index&amp;utm_content=original');">
+        <div class="hero-slide-overlay"></div>
+        <div class="hero-slide-content">
+          <div class="hero-badge-pill">
+            <span class="pill-dot"></span>
+            <span>PARLIAMENTARY &amp; CIVIC GOVERNANCE</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="title-light">Civic Governance.</span>
+            <span class="title-bold">Statutory Admissibility.</span>
+          </h1>
+          <p class="hero-subhead">
+            Engineered to uphold strict evidentiary requirements with authenticated PKI digital signatures, immutable audit trails, and strict role-based access control.
+          </p>
+          <div class="hero-actions">
+            <a href="#security-pillars" class="btn-pill btn-primary">EXPLORE CAPABILITIES</a>
+            <a href="#features" class="btn-pill btn-pill-outline-white">SECURITY CONTROLS</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Supreme Court of India -->
+      <div class="hero-slide" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/58/Supreme_Court_of_India_02.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=index&amp;utm_content=original');">
+        <div class="hero-slide-overlay"></div>
+        <div class="hero-slide-content">
+          <div class="hero-badge-pill">
+            <span class="pill-dot"></span>
+            <span>JUDICIAL &amp; FORENSIC CUSTODY</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="title-light">Judicial Integrity.</span>
+            <span class="title-bold">Forensic Chain of Custody.</span>
+          </h1>
+          <p class="hero-subhead">
+            Safeguards court proceedings, sealed affidavits, and forensic lab findings with continuous multi-node verification and zero-tampering guarantees.
+          </p>
+          <div class="hero-actions">
+            <a href="#version-chain" class="btn-pill btn-primary">INSPECT VERSION CHAIN</a>
+            <a href="#security-pillars" class="btn-pill btn-pill-outline-white">VIEW SECURITY PILLARS</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Pi Data Center -->
+      <div class="hero-slide" style="background-image: url('https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Pi_Data_Center.jpg/1920px-Pi_Data_Center.jpg');">
+        <div class="hero-slide-overlay"></div>
+        <div class="hero-slide-content">
+          <div class="hero-badge-pill">
+            <span class="pill-dot"></span>
+            <span>DECENTRALIZED ARCHIVE CONSENSUS</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="title-light">Distributed Resilience.</span>
+            <span class="title-bold">Zero Single Point of Failure.</span>
+          </h1>
+          <p class="hero-subhead">
+            Empowered by Distributed Hash Tables (DHT) and autonomous multi-ledger consensus to eliminate centralized points of vulnerability and guarantee perpetual evidentiary provenance.
+          </p>
+          <div class="hero-actions">
+            <a href="#dht-inspector" class="btn-pill btn-primary">EXPLORE DHT CONSENSUS</a>
+            <button class="btn-pill btn-pill-outline-white trigger-access-modal">REQUEST NODE ACCESS</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: Centaur Server Room -->
+      <div class="hero-slide" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/36/Centaur_server_room_%282293424530%29.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=index&amp;utm_content=original');">
+        <div class="hero-slide-overlay"></div>
+        <div class="hero-slide-content">
+          <div class="hero-badge-pill">
+            <span class="pill-dot"></span>
+            <span>POST-QUANTUM RESILIENT ENCRYPTION</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="title-light">Quantum-Safe Storage.</span>
+            <span class="title-bold">AES-256 Symmetric Core.</span>
+          </h1>
+          <p class="hero-subhead">
+            Symmetric 256-bit encryption ensures files remain invulnerable to future quantum algorithmic decryption (Grover's algorithm resilience), preserving confidentiality for decades.
+          </p>
+          <div class="hero-actions">
+            <a href="#security-pillars" class="btn-pill btn-primary">CRYPTOGRAPHIC SPECS</a>
+            <button class="btn-pill btn-pill-outline-white trigger-access-modal">TECHNICAL WHITE PAPER</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: Data Center of CNPC -->
+      <div class="hero-slide" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/57/Data_Center_of_CNPC.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=index&amp;utm_content=original');">
+        <div class="hero-slide-overlay"></div>
+        <div class="hero-slide-content">
+          <div class="hero-badge-pill">
+            <span class="pill-dot"></span>
+            <span>HIGH-CONCURRENCY ENTERPRISE ARCHITECTURE</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="title-light">Enterprise Scale.</span>
+            <span class="title-bold">Cross-Node Ledger Parity.</span>
+          </h1>
+          <p class="hero-subhead">
+            Seamlessly handles millions of sensitive documents across dispersed high-security facilities with real-time cross-ledger matching and synchronized audit logging.
+          </p>
+          <div class="hero-actions">
+            <a href="#dht-inspector" class="btn-pill btn-primary">VIEW MULTI-LEDGER MATCH</a>
+            <a href="#sectors" class="btn-pill btn-pill-outline-white">ENTERPRISE USE CASES</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Carousel Arrow Controls -->
+    <button class="carousel-control carousel-prev" aria-label="Previous Slide">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="carousel-control carousel-next" aria-label="Next Slide">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Slide Indicators -->
+    <div class="carousel-indicators">
+      <button class="indicator-pill active" aria-label="Slide 1"></button>
+      <button class="indicator-pill" aria-label="Slide 2"></button>
+      <button class="indicator-pill" aria-label="Slide 3"></button>
+      <button class="indicator-pill" aria-label="Slide 4"></button>
+      <button class="indicator-pill" aria-label="Slide 5"></button>
+      <button class="indicator-pill" aria-label="Slide 6"></button>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Horizontal "Quick Action" Band Directly Below Hero
+       Solid color background, evenly spaced flat white icon + uppercase label combos
+       One segment in contrasting accent color as a callout
+       ========================================================================== -->
+  <section class="quick-action-band">
+    <div class="quick-action-grid">
+      
+      <a href="#security-pillars" class="quick-action-item">
+        <div class="quick-action-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <span class="quick-action-label">ROLE ACCESS CONTROL</span>
+      </a>
+
+      <a href="#features" class="quick-action-item">
+        <div class="quick-action-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </div>
+        <span class="quick-action-label">AES-256 QUANTUM SHIELD</span>
+      </a>
+
+      <a href="#dht-inspector" class="quick-action-item">
+        <div class="quick-action-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M3 15h18M9 3v18M15 3v18"></path></svg>
+        </div>
+        <span class="quick-action-label">INSPECT HASH TABLE</span>
+      </a>
+
+      <a href="#version-chain" class="quick-action-item">
+        <div class="quick-action-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><circle cx="18" cy="18" r="3"></circle></svg>
+        </div>
+        <span class="quick-action-label">AUDIT VERSION CHAINS</span>
+      </a>
+
+      <!-- Callout segment in contrasting accent color -->
+      <a href="#dht-inspector" class="quick-action-item">
+        <div class="quick-action-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <span class="quick-action-label">CROSS-LEDGER VERIFICATION</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Institutional Full-Width Sovereign Portal Authentication Section
+       ========================================================================== -->
+  <section class="portal-login-section" id="portal-login-section">
+    <div class="section-container">
+      
+      <div class="section-header" style="margin-bottom: 32px;">
+        <span class="section-eyebrow">SOVEREIGN AUTHENTICATION PORTAL</span>
+        <h2 class="section-title">
+          <span class="title-light">Authorized Access.</span>
+          <span class="title-bold">Zero-Knowledge End-to-End Cryptography.</span>
+        </h2>
+        <p class="section-desc">
+          Enter your authorized institutional credentials and organizational encryption key to decrypt your sovereign custodial documents locally within your browser's protected client memory.
+        </p>
+      </div>
+
+      <div class="login-card-wrapper login-card-navy-gradient" id="login-card-container">
+        <form id="portal-login-form" class="portal-login-form" onsubmit="event.preventDefault();">
+          <div class="login-form-grid">
+            
+            <!-- Col 1: Email ID -->
+            <div class="form-group">
+              <div class="login-label-wrapper">
+                <label class="form-label" for="login-email">Official Email ID</label>
+              </div>
+              <div class="login-input-group">
+                <span class="login-input-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </span>
+                <input type="email" id="login-email" class="form-control login-input" placeholder="officer.registry@gov.in" required autocomplete="email">
+              </div>
+            </div>
+
+            <!-- Col 2: User Password -->
+            <div class="form-group">
+              <div class="login-label-wrapper">
+                <label class="form-label" for="login-password">User Password</label>
+              </div>
+              <div class="login-input-group">
+                <span class="login-input-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                </span>
+                <input type="password" id="login-password" class="form-control login-input" placeholder="Enter your personal password" required autocomplete="current-password">
+              </div>
+            </div>
+
+            <!-- Col 3: Org AES Key -->
+            <div class="form-group">
+              <div class="login-label-wrapper">
+                <label class="form-label" for="login-aes-key">Organization AES Key for E2E</label>
+              </div>
+              <div class="login-input-group">
+                <span class="login-input-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7.5" cy="15.5" r="5.5"></circle><path d="m21 2-9.6 9.6"></path><path d="m15.5 7.5 3 3"></path><path d="m18.5 4.5 3 3"></path></svg>
+                </span>
+                <input type="password" id="login-aes-key" class="form-control login-input" placeholder="e.g. 0x8f4c91... or paste key" required autocomplete="off" spellcheck="false">
+              </div>
+              <!-- Prominent First-Time Admin Key Generation Action -->
+              <div style="margin-top: 8px; display:flex; align-items:center; justify-content:space-between;">
+                <button type="button" id="btn-generate-aes" onclick="openAesDisclaimerModal()" style="display:inline-flex; align-items:center; gap:6px; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); color:#38BDF8; font-size:0.75rem; font-weight:700; cursor:pointer; padding:4px 10px; border-radius:4px; transition:all 0.15s ease;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2l-2 2m-1.5 1.5L14 9l-1.5-1.5L10 10l4 4 2.5-2.5L18 13l3.5-3.5-2-2zM3 21l6-6"/></svg>
+                  Generate New AES Key (First-Time Admins)
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="login-status-msg" style="display:none; padding:12px 16px; border-radius:6px; font-size:0.86rem; margin: 18px 0;"></div>
+
+          <div class="login-action-row">
+            <p class="login-client-note">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              <span>Zero-knowledge client-side decryption in browser RAM. Keys are never transmitted over network.</span>
+            </p>
+            <div class="login-buttons-group" style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+              <button type="button" id="demo-credentials-btn" class="btn-pill btn-demo-credentials">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                LOGIN WITH DEMO CREDENTIALS
+              </button>
+              <button type="submit" id="portal-submit-btn" class="btn-pill btn-primary login-btn-compact">
+                AUTHENTICATE &amp; DECRYPT
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+    <!-- ==========================================================================
+       Content Section 1: Core Cryptographic Architecture
+       Pattern: Section Title -> Short Descriptive Paragraph ->
+       4-Column Icon Grid separated by Thin Vertical Divider Lines
+       ========================================================================== -->
+  <section class="content-section" id="security-pillars">
+    <div class="section-container">
+      
+      <div class="section-header">
+        <span class="section-eyebrow">DEFENSE-IN-DEPTH ARCHITECTURE</span>
+        <h2 class="section-title">
+          <span class="title-light">Institutional Integrity by Design.</span>
+          <span class="title-bold">Military-Grade Cryptography.</span>
+        </h2>
+        <p class="section-desc">
+          Akshara Vault combines post-quantum symmetric cryptographic primitives, decentralized consensus networks, and rigorous statutory audit logging to ensure that high-stakes documents remain authentic, immutable, and fully verifiable under strict court standards.
+        </p>
+      </div>
+
+      <div class="icon-grid icon-grid-4">
+        
+        <!-- Column 1: Role Based Access Control -->
+        <div class="icon-grid-col">
+          <div class="icon-glyph-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <span class="col-caption-label">CLEARANCE PROTOCOLS</span>
+          <h3 class="col-heading">Role Based Access Control</h3>
+          <p class="col-text">
+            Granular permission partitioning across Judicial, Investigative, Forensic, Auditor, and Admin tiers ensures strict least-privilege document access and operational separation of duties.
+          </p>
+          <div class="col-spec-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>NIST SP 800-162 COMPLIANT</span>
+          </div>
+        </div>
+
+        <!-- Column 2: AES 256-Bit E2E Encryption -->
+        <div class="icon-grid-col">
+          <div class="icon-glyph-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <span class="col-caption-label">QUANTUM-SAFE STORAGE</span>
+          <h3 class="col-heading">AES-256 Bit Encryption</h3>
+          <p class="col-text">
+            End-to-end symmetric encryption secures documents at rest and in transit. Because it is symmetric, AES-256 retains 128 bits of security against Grover's algorithm, guaranteeing post-quantum resilience.
+          </p>
+          <div class="col-spec-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>FIPS 197 VALIDATED ENVELOPE</span>
+          </div>
+        </div>
+
+        <!-- Column 3: Digital Signatures -->
+        <div class="icon-grid-col">
+          <div class="icon-glyph-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          </div>
+          <span class="col-caption-label">AUTHENTIC AUTHORSHIP</span>
+          <h3 class="col-heading">PKI Digital Signatures</h3>
+          <p class="col-text">
+            Cryptographic non-repudiation certifies author identity using X.509 certificates and hardware security module (HSM) attestation, establishing indisputable legal authorship.
+          </p>
+          <div class="col-spec-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>INDIAN IT ACT / e-SIGN COMPLIANT</span>
+          </div>
+        </div>
+
+        <!-- Column 4: Tamper-proof DHT -->
+        <div class="icon-grid-col">
+          <div class="icon-glyph-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <span class="col-caption-label">DECENTRALIZED CONSENSUS</span>
+          <h3 class="col-heading">Tamper-Proof DHT</h3>
+          <p class="col-text">
+            Distributed Hash Tables shard document digests across multi-node geographic clusters. Any attempt to modify even a single bit is instantly identified and rejected by node consensus.
+          </p>
+          <div class="col-spec-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>KADEMLIA SHARD RESILIENCE</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Interactive Tool Section: Distributed Hash Table & Multi-Ledger Inspector
+       View the hash table and verify it by matching with different ledgers
+       ========================================================================== -->
+  <section class="content-section" id="dht-inspector">
+    <div class="section-container">
+      
+      <div class="section-header">
+        <span class="section-eyebrow">DISTRIBUTED HASH TABLE &amp; MULTI-LEDGER AUDIT</span>
+        <h2 class="section-title">
+          <span class="title-light">Decentralized Parity.</span>
+          <span class="title-bold">Cross-Ledger Verification Inspector.</span>
+        </h2>
+        <p class="section-desc">
+          Akshara Vault continuously synchronizes document hashes across independent institutional ledgers. Inspect live node shards, execute real-time consensus checks, or simulate a tamper attempt to observe automated Byzantine fault recovery.
+        </p>
+      </div>
+
+      <!-- Live DHT Inspector Board -->
+      <div class="dht-inspector-board">
+        <div class="dht-header">
+          <div class="dht-title-group">
+            <h3>Active Distributed Ledger Mesh — Node Consensus Ring</h3>
+            <p>Target Record: SC-SLP-2024-9104 | Document Root: 0x8f5a2c4992de314b8a209e7c5b136894c2514fa99b418a1a3641b61974ef99bc</p>
+          </div>
+          <div class="dht-controls">
+            <button id="run-dht-verification-btn" class="btn-pill btn-primary">VERIFY CROSS-LEDGER PARITY</button>
+            <button id="simulate-tamper-btn" class="btn-pill btn-pill-outline-white" style="border-color:#f87171; color:#f87171;">SIMULATE TAMPER ATTEMPT</button>
+            <button id="reset-dht-btn" class="btn-pill btn-pill-outline-white" style="font-size:0.75rem; padding:8px 16px;">RESET</button>
+          </div>
+        </div>
+
+        <div class="dht-table-wrapper">
+          <table class="dht-table">
+            <thead>
+              <tr>
+                <th>LEDGER NODE IDENTIFIER</th>
+                <th>INSTITUTIONAL JURISDICTION</th>
+                <th>DHT BUCKET ID</th>
+                <th>SYNCHRONIZED DOCUMENT HASH</th>
+                <th>CONSENSUS STATUS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="dht-ledger-row" data-node="sc-node" data-original-hash="0x8f5a2c4992de...74ef99bc">
+                <td style="color:#FFFFFF; font-weight:bold;">NODE-DEL-SC01</td>
+                <td>Supreme Court Judicial Vault (New Delhi)</td>
+                <td>bucket-0x8f000</td>
+                <td class="node-hash-cell">0x8f5a2c4992de...74ef99bc</td>
+                <td class="node-status-cell"><span style="color:#10b981; font-weight:bold;">● 100% IN CONSENSUS</span></td>
+              </tr>
+              <tr class="dht-ledger-row" data-node="cfsl-node" data-original-hash="0x8f5a2c4992de...74ef99bc">
+                <td style="color:#FFFFFF; font-weight:bold;">NODE-DEL-CFSL02</td>
+                <td>Central Forensic Science Laboratory (CBI)</td>
+                <td>bucket-0x8f001</td>
+                <td class="node-hash-cell">0x8f5a2c4992de...74ef99bc</td>
+                <td class="node-status-cell"><span style="color:#10b981; font-weight:bold;">● 100% IN CONSENSUS</span></td>
+              </tr>
+              <tr class="dht-ledger-row" data-node="ed-node" data-original-hash="0x8f5a2c4992de...74ef99bc">
+                <td style="color:#FFFFFF; font-weight:bold;">NODE-MUM-ED03</td>
+                <td>Enforcement Directorate Financial Audit Ledger</td>
+                <td>bucket-0x8f002</td>
+                <td class="node-hash-cell">0x8f5a2c4992de...74ef99bc</td>
+                <td class="node-status-cell"><span style="color:#10b981; font-weight:bold;">● 100% IN CONSENSUS</span></td>
+              </tr>
+              <tr class="dht-ledger-row" data-node="hc-node" data-original-hash="0x8f5a2c4992de...74ef99bc">
+                <td style="color:#FFFFFF; font-weight:bold;">NODE-BLR-HC04</td>
+                <td>High Court Appellate Archive (Bengaluru)</td>
+                <td>bucket-0x8f003</td>
+                <td class="node-hash-cell">0x8f5a2c4992de...74ef99bc</td>
+                <td class="node-status-cell"><span style="color:#10b981; font-weight:bold;">● 100% IN CONSENSUS</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="dht-status-message" class="dht-alert-box success">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <div>
+            <strong>Cross-Ledger Consensus Verified:</strong> All 4 independent ledgers confirm identical cryptographic Merkle roots. Zero hash deviations detected across distributed shards.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Content Section 2: Version Control & Immutable Chaining
+       Pattern: Section Title -> Short Descriptive Paragraph ->
+       Interactive Version Chain Node Flow
+       ========================================================================== -->
+  <section class="content-section section-alt" id="version-chain">
+    <div class="section-container">
+      
+      <div class="section-header">
+        <span class="section-eyebrow">IMMUTABLE PROVENANCE &amp; REVISIONS</span>
+        <h2 class="section-title">
+          <span class="title-light">Version Control.</span>
+          <span class="title-bold">Cryptographically Chained Revisions.</span>
+        </h2>
+        <p class="section-desc">
+          When updated information or supplementary evidence is submitted, Akshara Vault appends a new version without ever overwriting historical states. Each new revision binds directly to its parent hash, forming an unbroken cryptographic chain of evidence.
+        </p>
+      </div>
+
+      <!-- Version Chain Visualizer -->
+      <div class="version-chain-row">
+        
+        <!-- Node 1: v1.0 -->
+        <div class="version-node-card" data-version-key="v1">
+          <div class="version-tag">VERSION 1.0 (ORIGINAL)</div>
+          <div class="version-hash">0x11a4c902ef19028a...</div>
+          <div class="version-meta">
+            <strong>DSP Crime Branch</strong><br>
+            Sealed Site Seizure &amp; Initial Deposition<br>
+            <span style="color:var(--color-gray-light); font-size:0.72rem;">2024-09-15 09:14 IST</span>
+          </div>
+        </div>
+
+        <div class="version-chain-arrow">→</div>
+
+        <!-- Node 2: v2.0 -->
+        <div class="version-node-card" data-version-key="v2">
+          <div class="version-tag">VERSION 2.0 (FORENSICS)</div>
+          <div class="version-hash">0x4b78e120da89410e...</div>
+          <div class="version-meta">
+            <strong>CFSL Senior Scientist</strong><br>
+            Ballistic Telemetry &amp; Hard Drive Clone<br>
+            <span style="color:var(--color-gray-light); font-size:0.72rem;">2024-09-17 14:12 IST</span>
+          </div>
+        </div>
+
+        <div class="version-chain-arrow">→</div>
+
+        <!-- Node 3: v3.0 (Active) -->
+        <div class="version-node-card active" data-version-key="v3">
+          <div class="version-tag">VERSION 3.0 (BENCH ORDER)</div>
+          <div class="version-hash">0x8f5a2c4992de314b...</div>
+          <div class="version-meta">
+            <strong>Hon'ble High Court Bench</strong><br>
+            Final Bench Directives &amp; Custody Seal<br>
+            <span style="color:var(--color-gray-light); font-size:0.72rem;">2024-09-18 10:42 IST</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Version Detail Inspector Box -->
+      <div style="background:#ffffff; border:1px solid var(--color-border); border-radius:8px; padding:24px; margin-top:28px;">
+        <h4 id="version-detail-title" style="font-size:1.15rem; font-weight:800; color:var(--color-navy-dark); margin-bottom:8px;">
+          Version 3.0 - High Court Judicial Bench Order &amp; Final Custody Seal
+        </h4>
+        <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; font-size:0.84rem; margin-top:14px;">
+          <div>
+            <div style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:var(--color-gray-light);">Revision SHA-256 Digest</div>
+            <div id="version-detail-hash" style="font-family:monospace; color:var(--color-primary); word-break:break-all; font-weight:600;">
+              0x8f5a2c4992de314b8a209e7c5b136894c2514fa99b418a1a3641b61974ef99bc
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:var(--color-gray-light);">Parent Version Hash (Linked Back)</div>
+            <div id="version-detail-parent" style="font-family:monospace; color:var(--color-navy-dark); word-break:break-all;">
+              0x4b78e120da89410ef3901b0021fa4491029c8821902481029cba88102948cba0
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:var(--color-gray-light);">Signatory &amp; Submitter</div>
+            <div id="version-detail-author" style="font-weight:600; color:var(--color-navy-dark);">
+              Registrar General - Hon'ble High Court Special Bench
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.7rem; font-weight:800; text-transform:uppercase; color:var(--color-gray-light);">Evidentiary Audit Note</div>
+            <div id="version-detail-notes" style="color:var(--color-gray-body);">
+              Bench directives, witness cross-examination certificates, and Supreme Court vault replication order. Finalized immutable seal.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Content Section 4: Institutional Deployments & Enterprise Sectors
+       Pattern: Section Title -> Short Descriptive Paragraph ->
+       3-Column Icon Grid separated by Thin Vertical Divider Lines
+       ========================================================================== -->
+  <section class="content-section section-alt" id="sectors">
+    <div class="section-container">
+      
+      <div class="section-header">
+        <span class="section-eyebrow">INSTITUTIONAL SECTORS &amp; PRIVATE SECTOR USE</span>
+        <h2 class="section-title">
+          <span class="title-light">Engineered for Sovereignty.</span>
+          <span class="title-bold">Deployable Across Government &amp; Enterprise.</span>
+        </h2>
+        <p class="section-desc">
+          From supreme judicial tribunals managing classified affidavits to Fortune 500 legal teams orchestrating billion-dollar M&amp;A due diligence, Akshara Vault delivers uncompromising evidentiary custody.
+        </p>
+      </div>
+
+      <div class="icon-grid icon-grid-3">
+        
+        <!-- Column 1: Courts & Judicial Tribunals -->
+        <div class="icon-grid-col">
+          <div class="icon-glyph-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"></path></svg>
+          </div>
+          <span class="col-caption-label">CIVIC JUSTICE</span>
+          <h3 class="col-heading">Courts &amp; Judicial Tribunals</h3>
+          <p class="col-text">
+            End-to-end management of electronic case filings, sealed bench depositions, judicial decrees, and digital trial exhibits with indisputable chain of custody admissible in any court of law.
+          </p>
+          <div class="col-spec-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>APPELLATE &amp; BENCH GRADE</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Law Enforcement & Forensics -->
+        <div class="icon-grid-col">
+          <div class="icon-glyph-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <span class="col-caption-label">INVESTIGATIVE INTEGRITY</span>
+          <h3 class="col-heading">Law Enforcement &amp; Police</h3>
+          <p class="col-text">
+            Guarantees that electronic first information reports (e-FIRs), ballistic diagnostics, forensic hard-drive sector hashes, and seizure certificates remain 100% untampered throughout trial.
+          </p>
+          <div class="col-spec-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>CRIMINAL PROCEDURE COMPLIANT</span>
+          </div>
+        </div>
+
+        <!-- Column 3: Private Organizations & BFSI -->
+        <div class="icon-grid-col">
+          <div class="icon-glyph-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </div>
+          <span class="col-caption-label">ENTERPRISE GOVERNANCE</span>
+          <h3 class="col-heading">Regulated Enterprise &amp; BFSI</h3>
+          <p class="col-text">
+            Empowers commercial banks, multinational legal practices, and pharmaceutical clinical trials with tamper-proof version chains, confidential patent filings, and audit-ready board records.
+          </p>
+          <div class="col-spec-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>ISO 27001 &amp; SOC2 TYPE II</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+<!-- ==========================================================================
+       Institutional CTA Band
+       Saffron Sovereign Theme, Pill buttons, Flat Design
+       ========================================================================== -->
+  <section class="institutional-cta-band" id="compliance">
+    <div class="cta-band-container">
+      <div class="cta-text-group">
+        <h2 class="cta-band-title">Deploy Sovereign Document Security Today</h2>
+        <p class="cta-band-desc">
+          Whether you represent a High Court registry, an investigative enforcement wing, or an enterprise compliance board, Akshara Vault provides the institutional infrastructure required for immutable document custody.
+        </p>
+      </div>
+      <div class="cta-actions-group">
+        <button class="btn-pill btn-primary trigger-access-modal">REQUEST AUDIT DEMONSTRATION</button>
+        <a href="#dht-inspector" class="btn-pill btn-pill-outline-white">INSPECT HASH LEDGER</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Institutional Civic Footer
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      
+      <div class="footer-top-grid">
+        
+        <!-- Col 1: Brand Info -->
+        <div>
+          <div style="display:flex; align-items:center; margin-bottom:14px;">
+            <span style="color:#FFFFFF; font-weight:800; font-size:1.25rem; letter-spacing:0.02em;">AKSHARA VAULT</span>
+          </div>
+          <p style="font-size:0.84rem; line-height:1.65; margin-bottom:18px;">
+            A sovereign, quantum-resilient digital document management system engineered for high-security judicial, law enforcement, and regulated enterprise environments.
+          </p>
+          <div class="compliance-badge-list">
+            <div class="compliance-badge-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>FIPS 197 / AES-256 Symmetric Encryption</span>
+            </div>
+            <div class="compliance-badge-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>RFC 6962 / Cryptographic Audit Transparency</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Core Capabilities -->
+        <div>
+          <h4 class="footer-col-title">SYSTEM PILLARS</h4>
+          <ul class="footer-links-list">
+            <li><a href="#security-pillars">Role-Based Access Control</a></li>
+            <li><a href="#features">AES-256 Quantum Resilience</a></li>
+            <li><a href="#security-pillars">PKI Digital Signatures</a></li>
+            <li><a href="#dht-inspector">Distributed Hash Tables</a></li>
+            <li><a href="#security-pillars">Digital Trail &amp; Geolocation</a></li>
+            <li><a href="#version-chain">Version Chain Provenance</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Jurisdictions -->
+        <div>
+          <h4 class="footer-col-title">INSTITUTIONAL USE</h4>
+          <ul class="footer-links-list">
+            <li><a href="#sectors">Courts &amp; Judicial Tribunals</a></li>
+            <li><a href="#sectors">Law Enforcement &amp; Police</a></li>
+            <li><a href="#sectors">Forensic Laboratories (CFSL)</a></li>
+            <li><a href="#sectors">Public Sector Undertakings</a></li>
+            <li><a href="#sectors">Banking &amp; Financial Services</a></li>
+            <li><a href="#sectors">Regulated Enterprise Legal</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Verification & Network Status -->
+        <div>
+          <h4 class="footer-col-title">NETWORK TELEMETRY</h4>
+          <p style="font-size:0.78rem; line-height:1.6; margin-bottom:12px;">
+            All 4 primary ledger clusters are in full cryptographic quorum. Peer consensus delay: 14ms.
+          </p>
+          <div style="background:#0b132b; border: 1px solid rgba(74, 222, 128, 0.25); padding:12px 14px; border-radius:6px; font-family:monospace; font-size:0.72rem; color:#4ade80; text-shadow: 0 0 6px rgba(74, 222, 128, 0.4); line-height:1.7;">
+            DHT_HASH_ROOT: 0x8f5a2...ef99bc<br>
+            ACTIVE_SHARDS: 1,024 / 1,024<br>
+            CONSENSUS_STATE: NOMINAL (4/4)
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div></div>
+        <div style="display:flex; gap:20px;">
+          <a href="#" style="color:#64748b; text-decoration:none;">Privacy Policy</a>
+          <a href="#" style="color:#64748b; text-decoration:none;">Terms of Deployment</a>
+          <a href="#" style="color:#64748b; text-decoration:none;">Security Disclosure</a>
+          <a href="#" style="color:#64748b; text-decoration:none;">Audit Certificate</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Interactive Modal: Institutional Access Request Form
+       ========================================================================== -->
+  <div class="modal-overlay" id="access-request-modal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" aria-label="Close dialog">&times;</button>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+        <span class="brand-shield-mark" style="width:28px; height:28px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        <h3 style="font-size:1.3rem; font-weight:800; color:var(--color-navy-dark);">Request Institutional Demonstration</h3>
+      </div>
+      <p style="font-size:0.86rem; color:var(--color-gray-body); margin-bottom:20px;">
+        Deploy Akshara Vault within your jurisdiction or corporate infrastructure. Official government or institutional email required.
+      </p>
+
+      <form id="demo-access-form">
+        <div class="form-group">
+          <label class="form-label" for="org-name">Institution / Department Name</label>
+          <input type="text" id="org-name" class="form-control" placeholder="e.g. High Court of Judicature / Central Bureau of Investigation" required>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="form-group">
+            <label class="form-label" for="official-name">Authorized Officer Name</label>
+            <input type="text" id="official-name" class="form-control" placeholder="e.g. Dr. Rajesh Sharma" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="designation">Designation / Role</label>
+            <input type="text" id="designation" class="form-control" placeholder="e.g. Registrar (IT) / Director Forensics" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="official-email">Official Institutional Email (.gov.in / corporate)</label>
+          <input type="email" id="official-email" class="form-control" placeholder="officer@nic.in or legal@enterprise.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="deployment-sector">Operational Sector</label>
+          <select id="deployment-sector" class="form-control">
+            <option>Judicial Tribunals &amp; Court Records</option>
+            <option>Law Enforcement &amp; Criminal Investigations</option>
+            <option>Central Forensic Science Laboratories</option>
+            <option>Government Ministry / Sovereign Gazettes</option>
+            <option>Regulated Banking &amp; Financial Services</option>
+            <option>Private Enterprise Legal &amp; Compliance</option>
+          </select>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:24px;">
+          <button type="button" class="btn-pill btn-pill-sm btn-pill-outline-white modal-cancel-btn" style="color:var(--color-navy-dark); border-color:var(--color-border);">CANCEL</button>
+          <button type="submit" class="btn-pill btn-pill-sm btn-primary">SUBMIT ACCESS PETITION</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <!-- Supabase JS Client & App Configuration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+<!-- AES Key Generation Disclaimer Modal -->
+  <div id="aes-disclaimer-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(4,9,17,0.75); backdrop-filter:blur(4px); z-index:99999; align-items:center; justify-content:center;">
+    <div style="background:#0C1A2E; border:2px solid #EF4444; border-radius:10px; max-width:540px; width:90%; padding:28px; box-shadow:0 20px 50px rgba(0,0,0,0.5); color:#F8FAFC; font-family:'Plus Jakarta Sans', sans-serif;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <div style="background:rgba(239,68,68,0.2); border:1px solid #EF4444; width:38px; height:38px; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#EF4444; font-size:1.3rem; font-weight:bold;">⚠️</div>
+        <div>
+          <h3 style="margin:0; font-size:1.1rem; color:#FFFFFF; font-weight:800; letter-spacing:0.02em;">IMPORTANT CRYPTOGRAPHIC NOTICE</h3>
+          <span style="font-size:0.75rem; color:#FCA5A5; font-weight:600; text-transform:uppercase;">First-Time Organization Admin Key Initialization</span>
+        </div>
+      </div>
+      
+      <div style="background:rgba(239,68,68,0.08); border-left:3px solid #EF4444; padding:12px 14px; border-radius:4px; font-size:0.86rem; line-height:1.55; color:#E2E8F0; margin-bottom:18px;">
+        <strong style="color:#FECACA; display:block; margin-bottom:4px;">ATTENTION: Non-Admin Users Must Not Generate A Key!</strong>
+        This action generates a brand new AES-256 organization master key. It is strictly meant for a <strong>newly created Organization Administrator logging in for the very first time</strong>.
+      </div>
+
+      <p style="font-size:0.83rem; line-height:1.55; color:#94A3B8; margin-bottom:14px;">
+        If you are an <strong>existing user or staff member</strong>, generating a new key will mismatch your organization's encryption envelope and make <strong>all existing files and case documents completely inaccessible</strong>. Existing members must obtain the AES key from their department administrator.
+      </p>
+
+      <p style="font-size:0.83rem; line-height:1.55; color:#CBD5E1; margin-bottom:22px;">
+        Upon confirmation, a new 256-bit key will be generated locally in your browser RAM, downloaded as a secure keyfile, and automatically filled into the key input box.
+      </p>
+
+      <div style="display:flex; align-items:center; justify-content:flex-end; gap:12px;">
+        <button type="button" onclick="closeAesDisclaimerModal()" style="background:transparent; border:1px solid rgba(255,255,255,0.2); color:#FFFFFF; padding:9px 18px; border-radius:6px; font-size:0.82rem; font-weight:600; cursor:pointer;">
+          Cancel
+        </button>
+        <button type="button" onclick="confirmGenerateNewAesKey()" style="background:#EF4444; border:1px solid #DC2626; color:#FFFFFF; padding:9px 20px; border-radius:6px; font-size:0.82rem; font-weight:800; cursor:pointer; box-shadow:0 4px 14px rgba(239,68,68,0.4);">
+          I Understand, Generate &amp; Download Key
+        </button>
+      </div>
+    </div>
+  </div>
+
+<script>
+    function openAesDisclaimerModal() {
+      var modal = document.getElementById('aes-disclaimer-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closeAesDisclaimerModal() {
+      var modal = document.getElementById('aes-disclaimer-modal');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    function confirmGenerateNewAesKey() {
+      closeAesDisclaimerModal();
+      try {
+        var randomBytes = new Uint8Array(32);
+        (window.crypto || window.msCrypto).getRandomValues(randomBytes);
+        var hexKey = '0x' + Array.from(randomBytes).map(function(b) {
+          return b.toString(16).padStart(2, '0');
+        }).join('');
+
+        var aesInput = document.getElementById('login-aes-key');
+        if (aesInput) {
+          aesInput.value = hexKey;
+          aesInput.focus();
+        }
+
+        var filename = 'akshara-org-aes256-' + Date.now() + '.key';
+        var fileContent = [
+          '===================================================================',
+          'AKSHARA VAULT — CLIENT-SIDE AES-256 SOVEREIGN ENCRYPTION KEY',
+          '===================================================================',
+          'Generated: ' + new Date().toISOString(),
+          '',
+          'ORGANIZATION AES KEY:',
+          hexKey,
+          '',
+          'IMPORTANT NOTICE:',
+          'Keep this file in high-security cold storage. Akshara Vault operates',
+          'on strict zero-knowledge architecture. Neither the platform host nor',
+          'the webmaster ever has access to your key. If lost, your documents',
+          'cannot be decrypted or recovered by anyone.',
+          '==================================================================='
+        ].join('\n');
+
+        var blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
+        var link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+
+        var statusMsg = document.getElementById('login-status-msg');
+        if (statusMsg) {
+          statusMsg.style.display = 'block';
+          statusMsg.style.background = '#ECFDF5';
+          statusMsg.style.border = '1px solid #10B981';
+          statusMsg.style.color = '#047857';
+          statusMsg.innerHTML = '<strong>New AES-256 Key Generated:</strong> Key file downloaded as <code>' + filename + '</code> and populated into the input box below. Store this key securely!';
+        }
+      } catch (err) {
+        alert('Cryptographic key generation error: ' + err.message);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.getElementById('btn-generate-aes');
+      if (btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          openAesDisclaimerModal();
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

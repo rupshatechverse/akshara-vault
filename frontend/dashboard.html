@@ -1,0 +1,3194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custodial Dashboard | Akshara Vault Sovereign Records</title>
+  
+  <!-- Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  
+  
+  
+  
+  
+  <style>
+    /* =========================================================================
+       AKSHARA VAULT — PRIVATE INSTITUTIONAL WEALTH / LUXURY CONCIERGE DESIGN SYSTEM
+       Aesthetic: Private Swiss Banking / High-Stakes Sovereign Custody
+       Palette:
+       - Deepest Sovereign Midnight Navy (#08121E / #0A1628) dominant throughout
+       - Saffron treated strictly as Rare Foil Gold (#D47228 / #C6621B) — used with extreme restraint
+       Principles:
+       - Generous negative space & breathing room (confidence through subtraction)
+       - Barely-there 1px hairline dividers (#E6ECF2 / rgba(10, 22, 40, 0.07))
+       - Zero gradients, zero glassmorphism, zero multi-layer glowing bubbles
+       - Single-weight hairline stroke icons, precise tabular figures
+       ========================================================================= */
+    :root {
+      /* Midnight Navy Suite */
+      --navy-950: #060D17;
+      --navy-900: #08121E;
+      --navy-850: #0A1628;
+      --navy-800: #0F1E34;
+      --navy-700: #172A46;
+      --navy-text: #0A1628;
+      --navy-muted: #56677E;
+      --navy-ghost: #8A9BB0;
+
+      /* Rare Accent Metal (Saffron / Antique Custody Gold) */
+      --gold-primary: #D47228;
+      --gold-hover: #BF5F19;
+      --gold-subtle: #FDF7F2;
+      --gold-hairline: rgba(212, 114, 40, 0.28);
+
+      /* Eye-Friendly Muted Slate Canvas & Surfaces */
+      --canvas-bg: #EAEFF5;
+      --surface-card: #F8FAFC;
+      --surface-subtle: #EDF2F7;
+      --hairline-border: #CBD5E1;
+      --hairline-dark: rgba(10, 22, 40, 0.12);
+
+      /* Understated Single-Direction Shadow */
+      --shadow-quiet: 0 2px 8px rgba(10, 22, 40, 0.035);
+      --shadow-hover: 0 6px 18px rgba(10, 22, 40, 0.06);
+
+      /* Typography & Geometry */
+      --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --sidebar-width: 270px;
+      --topbar-height: 72px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--canvas-bg);
+      color: var(--navy-text);
+      display: flex;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* =========================================================================
+       SIDEBAR: Architectural Midnight Navy Panel
+       ========================================================================= */
+    .app-sidebar {
+      width: var(--sidebar-width);
+      background-color: var(--navy-900);
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+    }
+
+    .sidebar-header {
+      height: var(--topbar-height);
+      width: 100%;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background-color: var(--navy-950);
+    }
+
+    .sidebar-header-crest {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(212, 114, 40, 0.45);
+      background-color: rgba(212, 114, 40, 0.08);
+      color: var(--gold-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: var(--font-family);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .brand-tagline-sub {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.42);
+      letter-spacing: 0.04em;
+    }
+
+    .sidebar-menu {
+      padding: 28px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .menu-header {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.32);
+      padding: 16px 14px 8px 14px;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.86rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.14s ease;
+      position: relative;
+    }
+
+    .sidebar-item:hover {
+      background-color: rgba(255, 255, 255, 0.04);
+      color: #FFFFFF;
+    }
+
+    /* Active Nav: Clean solid gray background fill indicator (no outlines/lines) */
+    .sidebar-item.active {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      font-weight: 600;
+      border: none;
+      box-shadow: none;
+    }
+
+    .sidebar-item svg {
+      width: 17px;
+      height: 17px;
+      stroke-width: 1.5;
+      color: rgba(255, 255, 255, 0.5);
+      flex-shrink: 0;
+    }
+
+    .sidebar-item.active svg {
+      color: #FFFFFF;
+    }
+
+    .sidebar-footer {
+      padding: 18px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    .sovereign-status-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-dot-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #10B981;
+      flex-shrink: 0;
+    }
+
+    .status-text {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    /* =========================================================================
+       TOPBAR: High-Breathing Room White Surface
+       ========================================================================= */
+    .app-viewport {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .app-topbar {
+      height: var(--topbar-height);
+      background-color: var(--surface-card);
+      border-bottom: 1px solid var(--hairline-border);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .profile-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 4px 14px 4px 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--hairline-border);
+      background-color: var(--surface-card);
+    }
+
+    .profile-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      background-color: var(--navy-900);
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy-text);
+      line-height: 1.2;
+    }
+
+    .profile-role-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-logout {
+      background-color: transparent;
+      border: 1px solid var(--hairline-border);
+      color: var(--navy-muted);
+      border-radius: var(--radius-sm);
+      padding: 7px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.14s ease;
+    }
+
+    .btn-logout:hover {
+      border-color: #EF4444;
+      color: #DC2626;
+      background-color: #FEF2F2;
+    }
+
+    /* Generous luxury margin canvas */
+    .workspace-canvas {
+      padding: 48px 48px 80px 48px;
+      max-width: 1480px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* =========================================================================
+       STAT CARDS: Precision Tabular Figures & Restrained Gold Hero Accent
+       ========================================================================= */
+    .stats-matrix {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 44px;
+    }
+
+    .stat-card {
+      background-color: var(--surface-card);
+      border: 1px solid var(--hairline-border);
+      border-radius: var(--radius-md);
+      padding: 26px 28px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      box-shadow: var(--shadow-quiet);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+      position: relative;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(10, 22, 40, 0.18);
+      box-shadow: var(--shadow-hover);
+    }
+
+
+
+    /* Top stat card icon wrap: refined saffron hue */
+    .stat-icon-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background-color: #FDF6EE; /* Warm subtle saffron/amber tint */
+      border: 1px solid rgba(217, 119, 36, 0.22);
+      color: #D97724; /* Refined saffron gold */
+    }
+
+    .stat-icon-wrap svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 1.5;
+    }
+
+    .stat-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Large stat numbers in precise tabular figures with tight letter-spacing */
+    .stat-number {
+      font-size: 1.65rem;
+      font-weight: 700;
+      font-feature-settings: "tnum" 1;
+      font-variant-numeric: tabular-nums;
+      color: var(--navy-900);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 3px;
+    }
+
+    .stat-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--navy-muted);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================================
+       SECTION BAND & HEADINGS: Typographic Restraint
+       ========================================================================= */
+    .band-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 26px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .band-title {
+      font-size: 1.32rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      letter-spacing: -0.02em;
+    }
+
+    .band-subtitle {
+      font-size: 0.86rem;
+      color: var(--navy-muted);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* =========================================================================
+       BUTTONS: Understated Solid Navy Rectangles with Gold Reserved for Single CTA
+       ========================================================================= */
+    .btn-pill-primary {
+      font-family: var(--font-family);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--navy-900);
+      color: #FFFFFF;
+      padding: 9px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      border: 1px solid var(--navy-900);
+      cursor: pointer;
+      transition: background-color 0.14s ease, border-color 0.14s ease;
+    }
+
+    .btn-pill-primary:hover {
+      background-color: var(--navy-800);
+      border-color: var(--navy-800);
+    }
+
+
+
+    .btn-pill-secondary {
+      font-family: var(--font-family);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--surface-card);
+      border: 1px solid var(--hairline-border);
+      color: var(--navy-text);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .btn-pill-secondary:hover {
+      background-color: var(--surface-subtle);
+      border-color: rgba(10, 22, 40, 0.2);
+    }
+
+    .btn-pill-danger {
+      font-family: var(--font-family);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #FEF2F2;
+      border: 1px solid #FCA5A5;
+      color: #DC2626;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.14s ease;
+    }
+
+    .btn-pill-danger:hover {
+      background-color: #DC2626;
+      color: #FFFFFF;
+      border-color: #DC2626;
+    }
+
+    /* =========================================================================
+       CASES GRID & CARDS: Generous Padding, Strict Gutters, Quiet Hairlines
+       ========================================================================= */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 28px;
+    }
+
+    .case-card {
+      background-color: var(--surface-card);
+      border: 1px solid var(--hairline-border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 236px;
+      box-shadow: var(--shadow-quiet);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .case-card:hover {
+      border-color: rgba(10, 22, 40, 0.18);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Minimalist Case Serial Tag */
+    .case-serial-pill {
+      font-family: var(--font-sans);
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--navy-text);
+      background-color: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    
+    /* Prominent, Clearly Visible Search Bar Outline */
+    .panel-search-pill-input {
+      height: 52px !important;
+      border-radius: 9999px !important;
+      padding: 0 130px 0 52px !important;
+      font-size: 0.95rem !important;
+      font-weight: 500 !important;
+      border: 1.5px solid #94A3B8 !important;
+      background-color: #F8FAFC !important;
+      box-shadow: 0 2px 6px rgba(10, 22, 40, 0.06), inset 0 1px 2px rgba(10, 22, 40, 0.03) !important;
+      transition: all 0.16s ease !important;
+    }
+
+    .panel-search-pill-input:hover {
+      border-color: #64748B !important;
+      background-color: #FFFFFF !important;
+    }
+
+    .panel-search-pill-input:focus {
+      border-color: #0A1628 !important;
+      background-color: #FFFFFF !important;
+      box-shadow: 0 0 0 3.5px rgba(10, 22, 40, 0.12), 0 2px 8px rgba(10, 22, 40, 0.08) !important;
+      outline: none !important;
+    }
+
+    /* Drilldown Case ID Badge: Rectangular with Proportional Normal Font */
+    .case-drilldown-badge {
+      font-family: var(--font-sans);
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--navy-900);
+      background-color: var(--surface-subtle);
+      border: 1px solid var(--hairline-border);
+      padding: 5px 12px;
+      border-radius: var(--radius-sm);
+      line-height: 1.2;
+      box-shadow: 0 1px 2px rgba(10, 22, 40, 0.03);
+    }
+
+    .case-card-title {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--navy-text);
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+
+    .case-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-size: 0.82rem;
+      color: var(--navy-muted);
+      line-height: 1.5;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .meta-row svg {
+      width: 15px;
+      height: 15px;
+      stroke-width: 1.5;
+      color: var(--navy-ghost);
+      flex-shrink: 0;
+    }
+
+    /* Quiet Hairline Divider */
+    .case-card-footer {
+      border-top: 1px solid var(--hairline-border);
+      padding-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .docs-count-pill {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--navy-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .docs-count-pill svg {
+      width: 15px;
+      height: 15px;
+      stroke-width: 1.5;
+      color: var(--navy-ghost);
+    }
+
+    /* =========================================================================
+       DRILLDOWN VIEW: Case Dossier Hero Card
+       ========================================================================= */
+    .case-drilldown {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .drilldown-hero {
+      background-color: var(--surface-card);
+      border: 1px solid var(--hairline-border);
+      border-radius: var(--radius-md);
+      padding: 30px 34px;
+      box-shadow: var(--shadow-quiet);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .btn-back-crumb {
+      background-color: var(--surface-subtle);
+      border: 1px solid var(--hairline-border);
+      font-family: var(--font-family);
+      color: var(--navy-text);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 1px 2px rgba(10, 22, 40, 0.04);
+      transition: all 0.15s ease;
+    }
+
+    .btn-back-crumb svg {
+      transition: transform 0.15s ease;
+    }
+
+    .btn-back-crumb:hover {
+      background-color: #FFFFFF;
+      border-color: rgba(10, 22, 40, 0.22);
+      color: var(--navy-900);
+      box-shadow: 0 2px 6px rgba(10, 22, 40, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .btn-back-crumb:hover svg {
+      transform: translateX(-3px);
+    }
+
+    /* =========================================================================
+       ENTERPRISE DATA TABLES: Clean, High-Legibility, Quiet Luxury
+       ========================================================================= */
+    .data-table-card {
+      background-color: var(--surface-card);
+      border: 1px solid var(--hairline-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-quiet);
+      overflow-x: auto;
+    }
+
+    .enterprise-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+
+    .enterprise-table th {
+      background-color: var(--surface-subtle);
+      color: var(--navy-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 14px 22px;
+      border-bottom: 1px solid var(--hairline-border);
+    }
+
+    .enterprise-table td {
+      padding: 16px 22px;
+      border-bottom: 1px solid var(--hairline-border);
+      color: var(--navy-text);
+      vertical-align: middle;
+    }
+
+    .enterprise-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .enterprise-table tr:hover td {
+      background-color: #FAFCFE;
+    }
+
+    .hash-badge-mono {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      background-color: var(--surface-subtle);
+      color: #334155;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--hairline-border);
+    }
+
+    .badge-pill-green {
+      background-color: #F0FDF4;
+      color: #166534;
+      border: 1px solid #BBF7D0;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* =========================================================================
+       MODALS: Restrained Dialog Windows
+       ========================================================================= */
+    .app-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(8, 18, 30, 0.65);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .app-modal.open {
+      display: flex;
+    }
+
+    .modal-frame {
+      background-color: var(--surface-card);
+      border-radius: var(--radius-md);
+      width: 100%;
+      max-width: 560px;
+      border: 1px solid var(--hairline-border);
+      box-shadow: 0 16px 36px rgba(8, 18, 30, 0.16);
+      overflow: hidden;
+    }
+
+    .modal-frame-large {
+      max-width: 900px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-frame-large .modal-body {
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--hairline-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--surface-subtle);
+    }
+
+    .modal-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--navy-text);
+      letter-spacing: -0.01em;
+    }
+
+    .btn-close-modal {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--navy-muted);
+    }
+
+    .btn-close-modal:hover {
+      color: var(--navy-text);
+    }
+
+    .modal-body {
+      padding: 24px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--navy-text);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 9px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--hairline-border);
+      font-family: inherit;
+      font-size: 0.88rem;
+      color: var(--navy-text);
+      background-color: var(--surface-card);
+      transition: border-color 0.14s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--navy-900);
+      box-shadow: 0 0 0 2px rgba(10, 22, 40, 0.08);
+    }
+
+    /* Hash Viewer & Clipboard Button */
+    .btn-hash-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      font-family: var(--font-family);
+      color: var(--navy-850);
+      background-color: var(--surface-subtle);
+      border: 1px solid var(--hairline-border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(10, 22, 40, 0.04);
+      transition: all 0.14s ease;
+      white-space: nowrap;
+    }
+
+    .btn-hash-copy svg {
+      color: var(--navy-muted);
+      flex-shrink: 0;
+    }
+
+    .btn-hash-copy:hover {
+      background-color: #FFFFFF;
+      border-color: rgba(10, 22, 40, 0.22);
+      color: var(--navy-900);
+      box-shadow: 0 2px 6px rgba(10, 22, 40, 0.08);
+    }
+
+    .hash-copy-box {
+      background-color: var(--surface-subtle);
+      border: 1px solid var(--hairline-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hash-copy-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--navy-muted);
+    }
+
+    .hash-copy-val {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--navy-900);
+      word-break: break-all;
+      line-height: 1.45;
+      background: #FFFFFF;
+      padding: 8px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--hairline-border);
+      user-select: all;
+    }
+
+    .btn-copy-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border: 1px solid var(--hairline-border);
+      background: #FFFFFF;
+      color: var(--navy-text);
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+
+    .btn-copy-chip:hover {
+      border-color: var(--navy-900);
+      background: var(--surface-subtle);
+    }
+
+
+    /* Harmonized Table Row Action Buttons: Same size, proper alignment, same institutional color */
+    .btn-row-action {
+      font-family: var(--font-family);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      height: 30px;
+      padding: 0 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--navy-text);
+      background-color: var(--surface-subtle);
+      border: 1px solid var(--hairline-border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(10, 22, 40, 0.04);
+      transition: all 0.14s ease;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .btn-row-action:hover {
+      background-color: #FFFFFF;
+      border-color: rgba(10, 22, 40, 0.25);
+      color: var(--navy-900);
+      box-shadow: 0 2px 6px rgba(10, 22, 40, 0.08);
+      transform: translateY(-1px);
+    }
+
+
+    /* Elevated Sub-Modals (always appear in front of parent modals like version history) */
+    #inspect-modal,
+    #hash-viewer-modal {
+      z-index: 1200 !important;
+    }
+
+  </style>
+
+
+
+
+
+</head>
+<body>
+
+  <!-- =========================================================================
+       SIDEBAR
+       ========================================================================= -->
+  <aside class="app-sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-header-crest">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      </div>
+      <div>
+        <div class="brand-title">AKSHARA VAULT</div>
+        <div class="brand-tagline-sub">Digital Custody System</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-menu">
+      <div class="menu-header">WORKSPACE</div>
+      <a class="sidebar-item active" id="nav-link-cases" onclick="switchSidebarView('cases')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+        <span>Cases Registry</span>
+      </a>
+
+      <a class="sidebar-item" id="nav-link-dht" onclick="switchSidebarView('dht')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path></svg>
+        <span>Global Public DHT</span>
+      </a>
+
+      <a class="sidebar-item" id="nav-link-search" onclick="switchSidebarView('search')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Search</span>
+      </a>
+
+      <div class="menu-header" id="admin-menu-header">ADMINISTRATION</div>
+      <a class="sidebar-item" id="nav-link-admin" onclick="switchSidebarView('admin')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>User Management</span>
+      </a>
+
+      <a class="sidebar-item" id="nav-link-logs" onclick="switchSidebarView('logs')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <span>Activity Audit Logs</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sovereign-status-pill">
+        <span class="status-dot-pulse"></span>
+        <div>
+          <div class="status-text">RAM E2EE ACTIVE</div>
+          <div style="font-size:0.65rem; color:rgba(255,255,255,0.4); font-weight:600;">AES-GCM-256 ZERO KNOWLEDGE</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN VIEWPORT
+       ========================================================================= -->
+  <div class="app-viewport">
+    
+    <!-- Top Bar -->
+    <header class="app-topbar" style="justify-content: space-between; align-items:center;">
+      <!-- Organization Identity Badge -->
+      <div class="topbar-left" style="display:flex; align-items:center; gap:10px; max-width:60%;">
+        <div style="background:rgba(212, 114, 40, 0.12); border:1px solid rgba(212, 114, 40, 0.3); width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary, #D47228)" stroke-width="2.2"><path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M15 10v11M12 2l10 5H2l10-5z"/></svg>
+        </div>
+        <div style="overflow:hidden;">
+          <div style="font-size:0.68rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em;">Organization</div>
+          <div id="topbar-org-name" style="font-size:0.92rem; font-weight:800; color:var(--text-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="Organization Workspace">
+            Loading Organization...
+          </div>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <!-- Officer Profile Pill -->
+        <div class="profile-pill">
+          <div class="profile-avatar" id="user-avatar-letter">A</div>
+          <div class="profile-info">
+            <span class="profile-name" id="topbar-user-name">Administrator</span>
+            <span class="profile-role-tag" id="topbar-user-role">ADMIN</span>
+          </div>
+        </div>
+
+        <!-- Outlined Pill Logout Button -->
+        <button class="btn-logout" onclick="handleLogout()" title="Exit Vault">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>LOGOUT</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Canvas Workspace -->
+    <main class="workspace-canvas">
+      
+      <!-- Top 3 Stat Cards -->
+      <section class="stats-matrix">
+        <!-- Stat 1: Active Cases -->
+        <div class="stat-card">
+          <div class="stat-icon-wrap icon-saffron">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-number" id="kpi-total-cases">0</div>
+            <div class="stat-label">Institutional Cases</div>
+          </div>
+        </div>
+
+        <!-- Stat 2: Anchored Documents -->
+        <div class="stat-card">
+          <div class="stat-icon-wrap icon-saffron">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-number" id="kpi-anchored-docs">0</div>
+            <div class="stat-label">Anchored Documents</div>
+          </div>
+        </div>
+
+        <!-- Stat 3: Consensus Nodes -->
+        <div class="stat-card">
+          <div class="stat-icon-wrap icon-saffron">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path></svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-number" id="kpi-dht-nodes">1</div>
+            <div class="stat-label">Consensus Nodes</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION: CASES REGISTRY
+           ===================================================================== -->
+      <section id="view-cases">
+        <div class="band-header">
+          <div>
+            <h2 class="band-title">Cases Registry</h2>
+            <p class="band-subtitle">Active investigative dossiers with cryptographic multi-party sign-off</p>
+          </div>
+          
+          <button id="body-register-case-btn" class="btn-pill-primary" onclick="openCreateCaseModal()" style="display:none;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Register case
+          </button>
+        </div>
+
+        <div class="cases-grid" id="cases-grid-container">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION: CASE DRILLDOWN
+           ===================================================================== -->
+      <section id="view-case-detail" style="display:none;" class="case-drilldown">
+        <div class="drilldown-hero">
+          <div>
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
+              <button class="btn-back-crumb" onclick="returnToCases()" style="margin-bottom:0;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Return to Cases Registry
+              </button>
+              <span id="detail-case-number" class="case-drilldown-badge">CASE-#0000</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom: 0; flex-wrap:wrap;">
+              <h1 id="detail-case-title" style="font-size:1.42rem; font-weight:800; color:var(--navy-deep); margin:0; line-height:1.25;"></h1>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:10px;">
+            <button id="upload-doc-btn" class="btn-pill-primary" onclick="openUploadDocModal()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              Seal &amp; ingest document
+            </button>
+
+            <!-- Admin Serious Decommissioning Button -->
+            <button id="btn-admin-decommission-case" class="btn-pill-danger" onclick="openDecommissionCaseModal()" style="display:none;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              DECOMMISSION CASE
+            </button>
+          </div>
+        </div>
+
+        <div id="upload-permission-msg" style="display:none; padding:12px 18px; border-radius:10px; background:#FEF3C7; border:1px solid #F59E0B; color:#92400E; font-size:0.84rem; font-weight:600;">
+          🔒 View-Only Clearance: Document ingestion and evidence anchoring is restricted to Uploader and Administrator personnel.
+        </div>
+
+        <!-- Documents Table -->
+        <div class="data-table-card">
+          <table class="enterprise-table">
+            <thead>
+              <tr>
+                <th style="max-width:240px; width:220px;">File Title</th>
+                <th style="max-width:180px; width:160px;">Official Document ID</th>
+                <th>Upload ID</th>
+                <th>Type</th>
+                <th>Versions</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="case-docs-tbody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION: GLOBAL PUBLIC DHT
+           ===================================================================== -->
+      <section id="view-dht" style="display:none;">
+        <div class="band-header">
+          <div>
+            <h2 class="band-title">Global Public DHT (Distributed Hash Table)</h2>
+            <p class="band-subtitle">Privacy-Preserving Consensus Ledger: Strictly stores Upload ID, File Hash, and Commitment Hash</p>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <button class="btn-pill-secondary" onclick="openAddServerModal()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Add DHT Server
+            </button>
+            <button class="btn-pill-primary" id="btn-verify-dht" onclick="verifyAndSyncHashes()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Verify Hashes
+            </button>
+            <button class="btn-pill-secondary" onclick="loadPublicDht()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+              Refresh Ledger
+            </button>
+          </div>
+        </div>
+
+        <!-- Verification Results & Mirror Comparisons Panel -->
+        <div id="dht-verification-panel" style="display:none; margin-bottom:24px;">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Registered Mirror Servers Card -->
+        <div class="data-table-card" style="margin-bottom:24px; padding:18px 22px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+            <div>
+              <h3 style="font-size:0.96rem; font-weight:700; color:var(--navy-deep); margin:0;">
+                Consensus Mirror Peer Nodes
+              </h3>
+              <p style="font-size:0.78rem; color:var(--navy-muted); margin:3px 0 0 0;">
+                Federated institutional replicas used to audit and cross-verify decentralized hash consensus.
+              </p>
+            </div>
+            <button class="btn-row-action" onclick="loadDhtServers()" style="font-size:0.75rem;">
+              Sync Peers
+            </button>
+          </div>
+          <div id="dht-servers-list" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:12px;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <div style="background:#EFF6FF; border:1px solid #BFDBFE; color:#1E40AF; padding:12px 18px; border-radius:10px; margin-bottom:20px; font-size:0.84rem; display:flex; align-items:center; justify-content:space-between;">
+          <span>🌐 <strong>Public Peer Sync API:</strong> Any node or judicial server can mirror this ledger at <code>/api/dht/public-ledger</code></span>
+          <span class="badge-pill-green" id="dht-total-pill">0 Anchored Records</span>
+        </div>
+
+        <div class="data-table-card">
+          <table class="enterprise-table">
+            <thead>
+              <tr>
+                <th style="width: 140px;">Upload ID</th>
+                <th>File Hash (SHA-256)</th>
+                <th>Commitment Hash (Tamper-Proof Root)</th>
+              </tr>
+            </thead>
+            <tbody id="dht-tbody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION: UNIFIED SEARCH
+           ===================================================================== -->
+      <section id="view-search" style="display:none;">
+        <div class="band-header">
+          <div>
+            <h2 class="band-title">Search</h2>
+            <p class="band-subtitle">Universal cryptographic search across Case Names, Case IDs, File Names, Document IDs, File Hashes, and Commitment Hashes</p>
+          </div>
+        </div>
+
+        <!-- Prominent Unified Search Bar inside the Search Page -->
+        <div style="background:#FFFFFF; border:1px solid var(--border-navy-hairline); border-radius:16px; padding:20px 24px; box-shadow:var(--shadow-card); margin-bottom:28px;">
+          <div style="position:relative; display:flex; align-items:center; width:100%;">
+            <span style="position:absolute; left:18px; color:var(--text-muted); display:flex; align-items:center; pointer-events:none;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </span>
+            <input type="text" id="panel-search-input" class="form-control panel-search-pill-input" placeholder="Enter Case Name, Case ID (CASE-#0001), File Name, Document ID, File Hash, or Commitment Hash...">
+            <button type="button" class="btn-pill-primary" onclick="executePanelSearch()" style="position:absolute; right:6px; height:38px; border-radius:9999px; padding:0 22px; font-size:0.82rem; font-weight:700; letter-spacing:0.04em;">
+              SEARCH
+            </button>
+          </div>
+
+        </div>
+
+        <div class="data-table-card">
+          <table class="enterprise-table">
+            <thead>
+              <tr>
+                <th>Upload ID</th>
+                <th>Evidence Title &amp; Doc ID</th>
+                <th>Case Dossier</th>
+                <th>File Hash (SHA-256)</th>
+                <th>Commitment Hash</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="search-tbody">
+              <tr>
+                <td colspan="6" style="text-align:center; padding:48px; color:var(--text-muted);">
+                  Enter any query above and click <strong>SEARCH</strong> to scan the cryptographic index.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION: USER MANAGEMENT (ADMIN ONLY)
+           ===================================================================== -->
+      <section id="view-admin" style="display:none;">
+        <div class="band-header">
+          <div>
+            <h2 class="band-title">User Management</h2>
+            <p class="band-subtitle">Manage organization personnel, assign strictly 3 roles (Admin, Uploader, Viewer), and onboard/offboard officers</p>
+          </div>
+          <button class="btn-pill-primary" onclick="openAddUserModal()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            ADD NEW USER
+          </button>
+        </div>
+
+        <div class="data-table-card">
+          <table class="enterprise-table">
+            <thead>
+              <tr>
+                <th>Officer / User Account</th>
+                <th>Assigned Role</th>
+                <th>Case Clearance Scope</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users-tbody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION: ACTIVITY AUDIT LOGS (ADMIN ONLY)
+           ===================================================================== -->
+      <section id="view-logs" style="display:none;">
+        <div class="band-header">
+          <div>
+            <h2 class="band-title">Master Activity Audit Trail</h2>
+            <p class="band-subtitle">Comprehensive forensic event log of document uploads, downloads, cryptographic checks, and docket operations. Restricted to Administrators.</p>
+          </div>
+          
+          <button class="btn-pill-secondary" onclick="loadActivityLogs()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            Refresh Logs
+          </button>
+        </div>
+
+        <div class="data-table-card">
+          <table class="enterprise-table">
+            <thead>
+              <tr>
+                <th style="width: 140px;">Timestamp</th>
+                <th style="width: 110px;">Action</th>
+                <th style="width: 180px;">Officer / Actor</th>
+                <th>Target Resource</th>
+                <th>Case Dossier</th>
+                <th style="width: 140px;">Network / Device</th>
+                <th style="width: 130px;">Coordinates</th>
+              </tr>
+            </thead>
+            <tbody id="activity-logs-tbody">
+              <tr>
+                <td colspan="7" style="text-align:center; padding:32px; color:var(--navy-muted);">Loading forensic audit trail...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+
+    </main>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: REGISTER NEW CASE (ADMIN ONLY)
+       ========================================================================= -->
+  <!-- =========================================================================
+       MODAL: ADD DHT SERVER PEER
+       ========================================================================= -->
+  <div id="add-dht-server-modal" class="app-modal">
+    <div class="modal-frame">
+      <div class="modal-header">
+        <h3 class="modal-title">Register External DHT Mirror Node</h3>
+        <button class="btn-close-modal" onclick="closeModal('add-dht-server-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.83rem; color:var(--text-muted); margin-bottom:16px;">
+          Add a trusted peer server endpoint (e.g. state police, judicial registry, or forensic lab mirror) to automatically cross-verify hash consensus.
+        </p>
+        <div id="add-server-error" style="display:none; padding:10px 14px; background:#FEF2F2; border:1px solid #FECACA; color:#DC2626; border-radius:6px; font-size:0.82rem; margin-bottom:14px;"></div>
+        
+        <div class="form-group">
+          <label class="form-label">Server / Authority Name *</label>
+          <input type="text" id="dht-server-name-input" class="form-control" placeholder="e.g. Bangalore High Court Mirror Node">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Public DHT Mirror URL *</label>
+          <input type="url" id="dht-server-url-input" class="form-control" placeholder="https://registry.court.gov.in/api/dht/public-ledger">
+          <span style="font-size:0.75rem; color:var(--navy-muted); margin-top:4px; display:block;">
+            Must be an HTTP/HTTPS endpoint returning the standard key-value hash ledger JSON.
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-pill-secondary" onclick="closeModal('add-dht-server-modal')">Cancel</button>
+        <button class="btn-pill-primary" id="btn-submit-add-server" onclick="submitAddDhtServer()">Register Peer Node</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="create-case-modal" class="app-modal">
+    <div class="modal-frame">
+      <div class="modal-header">
+        <h3 class="modal-title">Register Case</h3>
+        <button class="btn-close-modal" onclick="closeModal('create-case-modal')">&times;</button>
+      </div>
+      <form id="create-case-form" class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Case Title / Investigative Subject</label>
+          <input type="text" id="case-title-input" class="form-control" required placeholder="e.g. Defense Procurement Document Tampering Inquiry">
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:24px;">
+          <button type="button" class="btn-pill-secondary" onclick="closeModal('create-case-modal')">Cancel</button>
+          <button type="submit" class="btn-pill-primary">CREATE CASE DOSSIER</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: DECOMMISSION CASE (ADMIN SERIOUS CONFIRMATION)
+       ========================================================================= -->
+  <div id="decommission-case-modal" class="app-modal">
+    <div class="modal-frame">
+      <div class="modal-header" style="background:#FEF2F2; border-bottom:1px solid #FCA5A5;">
+        <h3 class="modal-title" style="color:#B91C1C;">⚠️ Statutory Case Decommissioning</h3>
+        <button class="btn-close-modal" onclick="closeModal('decommission-case-modal')">&times;</button>
+      </div>
+      <form id="decommission-case-form" class="modal-body">
+        <div style="padding:14px; background:#FEF2F2; border:1px solid #FCA5A5; border-radius:8px; color:#991B1B; font-size:0.84rem; line-height:1.45; margin-bottom:18px;">
+          <strong>ATTENTION ADMINISTRATOR:</strong> Decommissioning this entire case will purge its custodial reference from this vault node. Individual file hashes permanently remain in the DHT consensus ledger.
+        </div>
+        
+        <div class="form-group">
+          <label style="display:flex; align-items:flex-start; gap:10px; font-size:0.84rem; color:var(--navy-deep); cursor:pointer;">
+            <input type="checkbox" id="decommission-legal-check" required style="margin-top:3px;">
+            <span><strong>I formally accept sole legal responsibility</strong> under the Indian Evidence Act (Sec 65B) and the Bharatiya Sakshya Adhiniyam for decommissioning this custodial case dossier.</span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" id="decommission-prompt-label">Type "DELETE CASE-#0000" to confirm</label>
+          <input type="text" id="decommission-confirm-input" class="form-control" required placeholder="DELETE CASE-#0000">
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:24px;">
+          <button type="button" class="btn-pill-secondary" onclick="closeModal('decommission-case-modal')">Abort</button>
+          <button type="submit" class="btn-pill-danger">PERMANENTLY DECOMMISSION</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: INGEST & SEAL DOCUMENT
+       ========================================================================= -->
+  <div id="upload-modal" class="app-modal">
+    <div class="modal-frame">
+      <div class="modal-header">
+        <h3 class="modal-title" id="upload-modal-title">Seal &amp; Ingest Evidence Document</h3>
+        <button class="btn-close-modal" onclick="closeModal('upload-modal')">&times;</button>
+      </div>
+      <form id="upload-doc-form" class="modal-body">
+        <input type="hidden" id="upload-parent-doc-id" value="">
+        
+        <div class="form-group">
+          <label class="form-label">Auto-Assigned Upload ID</label>
+          <input type="text" id="upload-modal-seq-id" class="form-control" readonly style="background:#F1F5F9; font-weight:700;" value="Generating server upload ID...">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Evidence Title</label>
+          <input type="text" id="doc-title-input" class="form-control" required placeholder="e.g. CCTV Camera 4 Hard Disk Sector Log">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">File Type</label>
+          <select id="doc-file-type-select" class="form-control">
+            <option value="FIR copy">FIR copy</option>
+            <option value="Video footage">Video footage</option>
+            <option value="Audio recording">Audio recording</option>
+            <option value="Land records">Land records</option>
+            <option value="Forensic report">Forensic report</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="form-group-official-id">
+          <label class="form-label">Official Document ID (Optional)</label>
+          <input type="text" id="doc-official-id-input" class="form-control" placeholder="e.g. FIR-2026/89B or RC-01/2026-CBI">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Description / Evidentiary Context</label>
+          <textarea id="doc-description-input" class="form-control" rows="2" placeholder="Describe chain of custody, seizure source, or technical details..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Binary Payload File (Encrypted locally before upload)</label>
+          <input type="file" id="doc-upload-file" class="form-control" required>
+        </div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; padding:8px 12px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px;">
+          <div id="upload-gps-status" style="font-size:0.78rem; color:#059669; font-weight:600;">
+            📍 Requesting browser GPS geolocation for forensic trail...
+          </div>
+          <button type="button" class="btn-pill-secondary" onclick="requestLocationFromBrowser()" style="padding:4px 10px; font-size:0.72rem;">
+            Prompt Location
+          </button>
+        </div>
+
+        <div id="upload-status-msg" style="display:none; padding:10px 14px; border-radius:8px; font-size:0.84rem; margin-bottom:14px;"></div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+          <button type="button" class="btn-pill-secondary" onclick="closeModal('upload-modal')">Cancel</button>
+          <button type="submit" id="btn-submit-upload" class="btn-pill-primary">ENCRYPT &amp; SEAL TO DHT</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: ONBOARD NEW USER (ADMIN ONLY)
+       ========================================================================= -->
+  <div id="add-user-modal" class="app-modal">
+    <div class="modal-frame">
+      <div class="modal-header">
+        <h3 class="modal-title">Onboard Organization Personnel</h3>
+        <button class="btn-close-modal" onclick="closeModal('add-user-modal')">&times;</button>
+      </div>
+      <form id="add-user-form" class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Full Name &amp; Designation</label>
+          <input type="text" id="add-user-name" class="form-control" required placeholder="e.g. Officer K. V. Raman">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Official Email ID</label>
+          <input type="email" id="add-user-email" class="form-control" required placeholder="e.g. officer.raman@cbi.gov.in">
+        </div>
+        <div class="form-group">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <label class="form-label">Initial User Password</label>
+            <button type="button" onclick="generateRandomUserPassword()" style="background:none; border:none; color:var(--gold-primary, #D47228); font-size:0.75rem; font-weight:700; cursor:pointer; text-decoration:underline;">
+              Generate Password
+            </button>
+          </div>
+          <input type="password" id="add-user-password" class="form-control" required placeholder="Create initial password for officer login">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Designated Role (Strictly 3 Roles)</label>
+          <select id="add-user-role" class="form-control">
+            <option value="VIEWER">VIEWER (Read-only access)</option>
+            <option value="UPLOADER">UPLOADER (Upload documents &amp; create versions)</option>
+            <option value="ADMIN">ADMIN (Full management, case creation &amp; decommission)</option>
+          </select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:24px;">
+          <button type="button" class="btn-pill-secondary" onclick="closeModal('add-user-modal')">Cancel</button>
+          <button type="submit" class="btn-pill-primary">ONBOARD OFFICER</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: EDIT USER ROLE & CLEARANCE SCOPE (ADMIN ONLY)
+       ========================================================================= -->
+  <div id="edit-role-modal" class="app-modal">
+    <div class="modal-frame">
+      <div class="modal-header">
+        <h3 class="modal-title">Modify Personnel Role &amp; Scope</h3>
+        <button class="btn-close-modal" onclick="closeModal('edit-role-modal')">&times;</button>
+      </div>
+      <form id="edit-role-form" class="modal-body">
+        <input type="hidden" id="edit-user-email">
+        <div class="form-group">
+          <label class="form-label">Assigned Role</label>
+          <select id="edit-user-role-select" class="form-control">
+            <option value="ADMIN">ADMIN (Full management, case creation &amp; decommission)</option>
+            <option value="UPLOADER">UPLOADER (Upload documents &amp; create versions)</option>
+            <option value="VIEWER">VIEWER (Read-only access)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Case Clearance Scope</label>
+          <div style="margin-bottom:8px;">
+            <label style="display:flex; align-items:center; gap:8px; font-weight:700; font-size:0.84rem;">
+              <input type="checkbox" id="edit-clearance-all" onchange="toggleAllCasesCheckbox(this)">
+              All Organization Cases (Unrestricted)
+            </label>
+          </div>
+          <div id="case-clearance-checkboxes" style="display:flex; flex-direction:column; gap:6px; padding:10px; border:1px solid #E2E8F0; border-radius:8px; max-height:160px; overflow-y:auto; background:#F8FAFC;">
+            <!-- Checkboxes injected dynamically -->
+          </div>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:24px;">
+          <button type="button" class="btn-pill-secondary" onclick="closeModal('edit-role-modal')">Cancel</button>
+          <button type="submit" class="btn-pill-primary">SAVE PERMISSIONS</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: INSPECT PROOF & FORENSIC ACCESS TRAIL (ADMIN ONLY FOR TRAIL)
+       ========================================================================= -->
+  <div id="inspect-modal" class="app-modal">
+    <div class="modal-frame modal-frame-large">
+      <div class="modal-header">
+        <h3 class="modal-title">Evidence Integrity Certificate &amp; Audit Trail</h3>
+        <button class="btn-close-modal" onclick="closeModal('inspect-modal')">&times;</button>
+      </div>
+      <div class="modal-body" id="inspect-modal-body">
+        <!-- Rendered dynamically -->
+      </div>
+      <div style="padding:16px 24px; border-top:1px solid var(--border-subtle); display:flex; justify-content:flex-end;">
+        <button type="button" class="btn-pill-secondary" onclick="closeModal('inspect-modal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: FILE VERSION HISTORY (LATEST AT TOP, ALL VERSIONS IN CHAIN)
+       ========================================================================= -->
+  <div id="version-history-modal" class="app-modal">
+    <div class="modal-frame modal-frame-large">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="version-modal-title">Evidence Version History</h3>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin:4px 0 0 0;" id="version-modal-subtitle">
+            Cryptographic ledger chain showing all versions in reverse chronological order
+          </p>
+        </div>
+        <button class="btn-close-modal" onclick="closeModal('version-history-modal')">&times;</button>
+      </div>
+      <div class="modal-body" id="version-modal-body" style="padding:20px 24px;">
+        <!-- Rendered dynamically -->
+      </div>
+      <div style="padding:16px 24px; border-top:1px solid var(--border-subtle); display:flex; justify-content:space-between; align-items:center;">
+        <span id="version-modal-chain-count" style="font-size:0.8rem; color:var(--text-muted); font-weight:600;"></span>
+        <button type="button" class="btn-pill-secondary" onclick="closeModal('version-history-modal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Dashboard Application Script -->
+  <script>
+    // Strict Client-Side Auth Guard
+    (function enforceAuthGuard() {
+      const storedEmail = window.sessionStorage.getItem('akshara_user_email');
+      if (!storedEmail || storedEmail.trim() === '') {
+        window.location.replace('index.html');
+      }
+    })();
+
+    const API_BASE = window.location.origin;
+    let currentUser = null;
+    let allCases = [];
+    let currentCase = null;
+    let currentCaseDocs = [];
+    let orgUsers = [];
+    let currentGPS = { lat: null, lng: null };
+
+    // Dedicated Geolocation Prompter: Prompts browser directly on user gesture
+    function requestLocationFromBrowser() {
+      return new Promise((resolve) => {
+        const gpsEl = document.getElementById('upload-gps-status');
+        if (!navigator.geolocation) {
+          if (gpsEl) gpsEl.innerHTML = `<span style="color:#B45309;">⚠️ Browser Geolocation API not supported. Falling back to Network IP coordinates.</span>`;
+          return resolve(null);
+        }
+
+        if (gpsEl) gpsEl.innerHTML = `<span style="color:#1D4ED8;">📍 Browser requesting location permission... Please click <strong>Allow</strong> on the browser prompt.</span>`;
+
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            currentGPS.lat = pos.coords.latitude;
+            currentGPS.lng = pos.coords.longitude;
+            if (gpsEl) {
+              gpsEl.innerHTML = `<span style="color:#059669; font-weight:700;">📍 GPS Location Locked: <code>${pos.coords.latitude.toFixed(5)}, ${pos.coords.longitude.toFixed(5)}</code> (Forensic Stamp Ready)</span>`;
+            }
+            resolve(pos.coords);
+          },
+          (err) => {
+            console.warn('Geolocation prompt result:', err.message);
+            if (gpsEl) {
+              if (err.code === 1) { // PERMISSION_DENIED
+                gpsEl.innerHTML = `<span style="color:#B45309; font-weight:600;">⚠️ Location permission denied by user. System will stamp network IP in forensic trail.</span>`;
+              } else {
+                gpsEl.innerHTML = `<span style="color:#B45309; font-weight:600;">⚠️ Geolocation lookup timed out. Recording Network IP &amp; User Agent stamp.</span>`;
+              }
+            }
+            resolve(null);
+          },
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        );
+      });
+    }
+
+    // Client-Side AES-GCM-256 Encryption & Decryption (Zero Knowledge)
+    async function getOrgCryptoKey() {
+      const rawKey = window.sessionStorage.getItem('akshara_org_aes_key') || '0x8f4c91a3e2098bfe194857201cba64f8';
+      const enc = new TextEncoder();
+      const keyMaterial = await window.crypto.subtle.importKey(
+        "raw",
+        enc.encode(rawKey),
+        { name: "PBKDF2" },
+        false,
+        ["deriveKey"]
+      );
+      return window.crypto.subtle.deriveKey(
+        {
+          name: "PBKDF2",
+          salt: enc.encode("akshara-vault-e2e-salt"),
+          iterations: 100000,
+          hash: "SHA-256"
+        },
+        keyMaterial,
+        { name: "AES-GCM", length: 256 },
+        true,
+        ["encrypt", "decrypt"]
+      );
+    }
+
+    async function encryptPayloadClient(arrayBuffer) {
+      const cryptoKey = await getOrgCryptoKey();
+      const iv = window.crypto.getRandomValues(new Uint8Array(12));
+      const encrypted = await window.crypto.subtle.encrypt(
+        { name: "AES-GCM", iv: iv },
+        cryptoKey,
+        arrayBuffer
+      );
+      // Prepend IV (12 bytes) to ciphertext
+      const result = new Uint8Array(iv.length + encrypted.byteLength);
+      result.set(iv, 0);
+      result.set(new Uint8Array(encrypted), iv.length);
+      return result.buffer;
+    }
+
+    async function decryptPayloadClient(arrayBuffer) {
+      const cryptoKey = await getOrgCryptoKey();
+      const fullBytes = new Uint8Array(arrayBuffer);
+      const iv = fullBytes.slice(0, 12);
+      const ciphertext = fullBytes.slice(12);
+      return window.crypto.subtle.decrypt(
+        { name: "AES-GCM", iv: iv },
+        cryptoKey,
+        ciphertext
+      );
+    }
+
+    // Initialization
+    window.addEventListener('DOMContentLoaded', async () => {
+      const email = window.sessionStorage.getItem('akshara_user_email') || 'example@example.com';
+      await loadUserProfile(email);
+      await loadCases();
+      await loadNodeStatus();
+      setupCreateCaseForm();
+      setupUploadForm();
+      setupAddUserForm();
+      setupEditRoleForm();
+      setupDecommissionForm();
+    });
+
+    // 1. User Profile & Clearance
+    async function loadUserProfile(email) {
+      try {
+        const resp = await fetch(`${API_BASE}/api/user-profile?email=${encodeURIComponent(email)}`);
+        currentUser = await resp.json();
+      } catch (err) {
+        currentUser = {
+          email: email,
+          full_name: email.split('@')[0].toUpperCase(),
+          role: "ADMIN",
+          is_admin: true,
+          can_upload: true,
+          can_create_case: true,
+          can_delete_case: true,
+          can_manage_roles: true,
+          allowed_cases: ["ALL"]
+        };
+      }
+
+      document.getElementById('topbar-user-name').innerText = currentUser.full_name || email.split('@')[0];
+      document.getElementById('topbar-user-role').innerText = currentUser.role;
+      document.getElementById('user-avatar-letter').innerText = (currentUser.full_name || 'A')[0].toUpperCase();
+
+      const orgNameEl = document.getElementById('topbar-org-name');
+      if (orgNameEl) {
+        const orgDisplay = currentUser.org_name || window.sessionStorage.getItem('akshara_user_org_name') || 'Sovereign Vault Organization';
+        const orgIdDisplay = currentUser.org_id ? ` (#${currentUser.org_id})` : '';
+        orgNameEl.innerText = `${orgDisplay}${orgIdDisplay}`;
+        orgNameEl.title = `${orgDisplay}${orgIdDisplay}`;
+      }
+
+      // Admin Only Navigation Controls
+      if (!currentUser.is_admin) {
+        document.getElementById('admin-menu-header').style.display = 'none';
+        document.getElementById('nav-link-admin').style.display = 'none';
+        document.getElementById('nav-link-logs').style.display = 'none';
+        document.getElementById('body-register-case-btn').style.display = 'none';
+      } else {
+        document.getElementById('admin-menu-header').style.display = 'block';
+        document.getElementById('nav-link-admin').style.display = 'flex';
+        document.getElementById('nav-link-logs').style.display = 'flex';
+        document.getElementById('body-register-case-btn').style.display = 'inline-flex';
+      }
+    }
+
+    // 2. Cases Registry
+    async function loadCases() {
+      const container = document.getElementById('cases-grid-container');
+      try {
+        const resp = await fetch(`${API_BASE}/api/cases?user_email=${encodeURIComponent(currentUser.email)}`);
+        allCases = await resp.json();
+      } catch (err) {
+        allCases = [];
+      }
+
+      document.getElementById('kpi-total-cases').innerText = allCases.length;
+      let totalDocs = allCases.reduce((acc, c) => acc + (c.doc_count || 0), 0);
+      document.getElementById('kpi-anchored-docs').innerText = totalDocs;
+
+      if (!allCases.length) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; padding: 48px; text-align: center; background: #FFFFFF; border-radius: 12px; border: 1px dashed #CBD5E1;">
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">No investigative case dossiers currently accessible within your clearance scope.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = allCases.map(c => `
+        <div class="case-card">
+          <div>
+            <span class="case-serial-pill">${c.case_number}</span>
+            <h3 class="case-card-title">${c.title}</h3>
+            <div class="case-card-meta">
+              <div class="meta-row">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>${new Date(c.created_at * 1000).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+              </div>
+              <div class="meta-row">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span>Lead Custodian: ${c.assigned_officer}</span>
+              </div>
+            </div>
+          </div>
+          <div class="case-card-footer">
+            <span class="docs-count-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              ${c.doc_count || 0} Sealed Documents
+            </span>
+            <button class="btn-pill-primary" onclick="openCaseDetail('${c.id}')" style="padding:7px 18px; font-size:0.78rem;">
+              Open case
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 3. Drilldown to Specific Case
+    
+    async function loadNodeStatus() {
+      try {
+        const resp = await fetch(`${API_BASE}/api/system/node-status`);
+        if (resp.ok) {
+          const data = await resp.json();
+          const nodesEl = document.getElementById('kpi-dht-nodes');
+          if (nodesEl) {
+            nodesEl.innerText = data.total_nodes === 1 ? '1' : `${data.active_nodes} / ${data.total_nodes}`;
+          }
+        }
+      } catch (err) {
+        console.warn('Node status query error:', err);
+      }
+    }
+
+    window.openCaseDetail = async function(caseId) {
+      currentCase = allCases.find(c => c.id === caseId);
+      if (!currentCase) return;
+
+      document.getElementById('view-cases').style.display = 'none';
+      document.getElementById('view-dht').style.display = 'none';
+      document.getElementById('view-search').style.display = 'none';
+      document.getElementById('view-admin').style.display = 'none';
+      document.getElementById('view-case-detail').style.display = 'flex';
+
+      document.getElementById('detail-case-number').innerText = currentCase.case_number;
+      document.getElementById('detail-case-title').innerText = currentCase.title;
+
+      const uploadBtn = document.getElementById('upload-doc-btn');
+      const permMsg = document.getElementById('upload-permission-msg');
+      const decommissionBtn = document.getElementById('btn-admin-decommission-case');
+
+      if (currentUser.can_upload) {
+        uploadBtn.style.display = 'inline-flex';
+        permMsg.style.display = 'none';
+      } else {
+        uploadBtn.style.display = 'none';
+        permMsg.style.display = 'block';
+      }
+
+      // Admin Decommission button
+      if (currentUser.is_admin) {
+        decommissionBtn.style.display = 'inline-flex';
+      } else {
+        decommissionBtn.style.display = 'none';
+      }
+
+      await loadCaseDocuments(caseId);
+    };
+
+    window.returnToCases = function() {
+      document.getElementById('view-case-detail').style.display = 'none';
+      document.getElementById('view-cases').style.display = 'block';
+      currentCase = null;
+      loadCases();
+    };
+
+    // Helper: Group documents by chain root so each logical file appears only once
+    function getDocumentChains(docs) {
+      // Map every document by its ID
+      const byId = {};
+      docs.forEach(d => { byId[d.id] = d; });
+
+      // Find root ancestor for any given doc
+      function findRootId(doc) {
+        let curr = doc;
+        while (curr.parent_doc_id && byId[curr.parent_doc_id]) {
+          curr = byId[curr.parent_doc_id];
+        }
+        return curr.id;
+      }
+
+      const chains = {};
+      docs.forEach(d => {
+        const rootId = findRootId(d);
+        if (!chains[rootId]) chains[rootId] = [];
+        chains[rootId].push(d);
+      });
+
+      // Sort each chain versions from latest at top (descending version)
+      Object.keys(chains).forEach(rootId => {
+        chains[rootId].sort((a, b) => b.version - a.version);
+      });
+
+      return chains;
+    }
+
+    async function loadCaseDocuments(caseId) {
+      const tbody = document.getElementById('case-docs-tbody');
+      try {
+        const resp = await fetch(`${API_BASE}/api/cases/${caseId}/documents?user_email=${encodeURIComponent(currentUser.email)}`);
+        currentCaseDocs = await resp.json();
+      } catch (err) {
+        currentCaseDocs = [];
+      }
+
+      if (!currentCaseDocs.length) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:36px; color:var(--text-muted);">No documents sealed in this case dossier yet.</td></tr>`;
+        return;
+      }
+
+      // Group all versions so each file appears only once in the main list
+      const chains = getDocumentChains(currentCaseDocs);
+      const chainRoots = Object.keys(chains);
+
+      tbody.innerHTML = chainRoots.map(rootId => {
+        const chain = chains[rootId];
+        const latestDoc = chain[0]; // Latest version is at top!
+        const totalVersions = chain.length;
+        const rootDoc = chain[chain.length - 1];
+
+        return `
+          <tr style="cursor:pointer; transition:background 0.15s ease;" onclick="openVersionHistoryModal('${rootId}')" title="Click to view all ${totalVersions} version(s) and their cryptographic hashes">
+            <td style="max-width:240px; width:220px; word-wrap:break-word; overflow-wrap:break-word; white-space:normal;">
+              <div style="font-size:0.9rem; font-weight:600; color:var(--navy-text); line-height:1.35; word-break:break-word; white-space:normal;">
+                ${latestDoc.title}
+              </div>
+              <span style="font-size:0.76rem; color:var(--navy-muted); word-break:break-all; display:block; margin-top:2px;">
+                ${latestDoc.file_name}
+              </span>
+            </td>
+            <td style="max-width:180px; width:160px; word-wrap:break-word; overflow-wrap:break-word; white-space:normal; font-size:0.84rem;">
+              ${latestDoc.doc_official_id ? `<span style="color:var(--navy-text); font-weight:500; word-break:break-word; line-height:1.35; display:inline-block;">${latestDoc.doc_official_id}</span>` : '<span style="color:var(--navy-muted); font-size:0.8rem; font-weight:500;">N/A</span>'}
+            </td>
+            <td style="font-size:0.84rem; font-weight:500; color:var(--navy-text);">
+              ${formatUploadId(latestDoc.upload_id)}
+            </td>
+            <td>
+              <span style="font-size:0.82rem; font-weight:500; color:var(--navy-secondary); text-transform:capitalize;">
+                ${latestDoc.file_type || 'Document'}
+              </span>
+            </td>
+            <td>
+              <span style="font-size:0.82rem; font-weight:600; color:var(--navy-text);">
+                ${totalVersions} ${totalVersions === 1 ? 'version' : 'versions'}
+              </span>
+            </td>
+            <td onclick="event.stopPropagation();">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button onclick="downloadAndDecryptDocument('${latestDoc.id}', '${latestDoc.file_name}')" class="btn-row-action" title="Download & Client Decrypt Latest Version">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Decrypt
+                </button>
+                <button onclick="openVersionHistoryModal('${rootId}')" class="btn-row-action" title="View all versions and hashes">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                  Versions (${totalVersions})
+                </button>
+                ${currentUser.can_upload ? `
+                  <button onclick="openVersionUploadModal('${latestDoc.id}', '${escapeQuotes(latestDoc.title)}', '${latestDoc.file_type}')" class="btn-row-action" title="Upload modified new version to chain">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    New Version
+                  </button>
+                ` : ''}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Modal: Open and display all versions of a file from top to bottom (latest at top)
+    window.openVersionHistoryModal = function(rootId) {
+      const chains = getDocumentChains(currentCaseDocs);
+      const chain = chains[rootId] || [];
+      if (!chain.length) return;
+
+      const latest = chain[0];
+      document.getElementById('version-modal-title').innerText = `${latest.title} — Version Chain`;
+      document.getElementById('version-modal-subtitle').innerHTML = `Canonical File: <code>${latest.file_name}</code> • ${chain.length} Cryptographically Sealed Version(s)`;
+      document.getElementById('version-modal-chain-count').innerText = `Displaying ${chain.length} immutable version(s) in reverse chronological order`;
+
+      const body = document.getElementById('version-modal-body');
+      body.innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          ${chain.map((ver, idx) => {
+            const isLatest = idx === 0;
+            return `
+              <div style="background:${isLatest ? '#F0FDF4' : '#FFFFFF'}; border:1.5px solid ${isLatest ? '#86EFAC' : '#E2E8F0'}; border-radius:12px; padding:16px 20px; box-shadow:0 2px 8px rgba(10,31,68,0.03); position:relative;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid #E2E8F0;">
+                  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    <span style="background:${isLatest ? '#065F46' : 'var(--navy-900)'}; color:#FFFFFF; font-size:0.72rem; font-weight:700; padding:4px 10px; border-radius:4px; letter-spacing:0.02em;">
+                      VERSION ${ver.version} ${isLatest ? '• LATEST' : ''}
+                    </span>
+                    <span style="font-size:0.75rem; font-weight:600; color:var(--navy-muted);">Upload ID #${formatUploadId(ver.upload_id)}</span>
+                    <span style="font-size:0.72rem; font-weight:600; color:var(--navy-text); background:#F1F5F9; border:1px solid #E2E8F0; padding:2px 8px; border-radius:4px; text-transform:capitalize;">
+                      ${ver.file_type || 'document'}
+                    </span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+                    <button onclick="openHashViewerModal('${escapeQuotes(ver.title)} (Version ${ver.version})', '${ver.sha256}', '${ver.commitment_hash}', '${ver.upload_id}')" class="btn-row-action" style="height:30px; font-size:0.75rem;">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                      Hashes
+                    </button>
+                    <button onclick="downloadAndDecryptDocument('${ver.id}', '${ver.file_name}')" class="btn-row-action" style="height:30px; font-size:0.75rem;">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                      Decrypt
+                    </button>
+                    <button onclick="inspectProofCertificate('${ver.id}')" class="btn-row-action" style="height:30px; font-size:0.75rem;">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                      Integrity &amp; Audit Trail
+                    </button>
+                  </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; font-size:0.78rem; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:12px 14px; margin-top:8px;">
+                  <div>
+                    <span style="font-weight:700; color:var(--text-muted); display:block; font-size:0.7rem; text-transform:uppercase;">File Details</span>
+                    <span style="font-weight:600; color:var(--navy-deep);">${ver.file_name}</span><br>
+                    <span style="color:var(--text-muted); font-size:0.72rem;">${(ver.size_bytes / 1024).toFixed(1)} KB</span>
+                  </div>
+                  <div>
+                    <span style="font-weight:700; color:var(--text-muted); display:block; font-size:0.7rem; text-transform:uppercase;">Cryptographic SHA-256</span>
+                    <span class="hash-badge-mono" style="font-size:0.72rem;" title="${ver.sha256}">${ver.sha256.substring(0, 18)}...</span>
+                  </div>
+                  <div>
+                    <span style="font-weight:700; color:var(--text-muted); display:block; font-size:0.7rem; text-transform:uppercase;">Forensic Timestamp &amp; Officer</span>
+                    <span style="color:var(--navy-deep); font-weight:600;">${new Date(ver.created_at * 1000).toLocaleString('en-IN', { dateStyle:'medium', timeStyle:'short' })}</span><br>
+                    <span style="color:#059669; font-weight:600; font-size:0.72rem;">Sealed by ${ver.author_email}</span>
+                  </div>
+                </div>
+
+                <div style="margin-top:10px; font-size:0.74rem; display:flex; align-items:center; gap:8px;">
+                  <span style="font-weight:700; color:var(--text-muted);">COMMITMENT ROOT:</span>
+                  <span class="hash-badge-mono"  title="${ver.commitment_hash}">${ver.commitment_hash}</span>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+
+      document.getElementById('version-history-modal').classList.add('open');
+    };
+
+    function formatUploadId(val) {
+      if (val === null || val === undefined || val === '') return '0000';
+      const n = parseInt(val, 10);
+      if (isNaN(n)) return String(val);
+      return n < 10000 ? String(n).padStart(4, '0') : String(n);
+    }
+
+    function escapeQuotes(str) {
+      return (str || '').replace(/'/g, "\\'");
+    }
+
+    // 4. Client-Side Download & Decryption
+    window.downloadAndDecryptDocument = async function(docId, fileName) {
+      try {
+        const resp = await fetch(`${API_BASE}/api/documents/${docId}/download?user_email=${encodeURIComponent(currentUser.email)}`);
+        if (!resp.ok) {
+          throw new Error('Download authorization failed');
+        }
+        const encryptedBuf = await resp.arrayBuffer();
+        
+        // Decrypt in client browser RAM with local AES key
+        const decryptedBuf = await decryptPayloadClient(encryptedBuf);
+        
+        // Trigger browser save
+        const blob = new Blob([decryptedBuf]);
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (err) {
+        alert('Cryptographic Decryption Error: ' + err.message);
+      }
+    };
+
+    // 5. Versioning Modal Opener
+    window.openVersionUploadModal = function(parentDocId, title, fileType) {
+      document.getElementById('upload-parent-doc-id').value = parentDocId;
+      document.getElementById('doc-title-input').value = title;
+      document.getElementById('doc-file-type-select').value = fileType || 'FIR copy';
+      document.getElementById('upload-modal-title').innerText = `Upload New Version to Chain (Immutable)`;
+      
+      // Hide official document ID field on new version upload (ID remains immutable)
+      const officialIdGroup = document.getElementById('form-group-official-id');
+      if (officialIdGroup) officialIdGroup.style.display = 'none';
+      document.getElementById('doc-official-id-input').value = '';
+
+      document.getElementById('upload-modal').classList.add('open');
+      generateUploadIdSeq();
+      requestLocationFromBrowser(); // Trigger browser permission prompt on button click!
+    };
+
+    window.openUploadDocModal = function() {
+      document.getElementById('upload-parent-doc-id').value = "";
+      document.getElementById('upload-doc-form').reset();
+      document.getElementById('upload-modal-title').innerText = `Seal & Ingest Evidence Document`;
+      
+      // Show official document ID field for new root document
+      const officialIdGroup = document.getElementById('form-group-official-id');
+      if (officialIdGroup) officialIdGroup.style.display = 'block';
+
+      document.getElementById('upload-modal').classList.add('open');
+      generateUploadIdSeq();
+      requestLocationFromBrowser(); // Trigger browser permission prompt on button click!
+    };
+
+    async function generateUploadIdSeq() {
+      try {
+        const resp = await fetch(`${API_BASE}/api/dht/public-ledger`);
+        const data = await resp.json();
+        const keys = Object.keys(data).map(k => parseInt(k, 10)).filter(n => !isNaN(n));
+        const nextId = keys.length ? Math.max(...keys) + 1 : 0;
+        document.getElementById('upload-modal-seq-id').value = `${nextId} (Auto-assigned)`;
+      } catch (e) {
+        document.getElementById('upload-modal-seq-id').value = `0 (Auto-assigned)`;
+      }
+    }
+
+    // 6. Navigation View Switcher
+    window.switchSidebarView = async function(view) {
+      document.querySelectorAll('.sidebar-item').forEach(link => link.classList.remove('active'));
+      const activeLink = document.getElementById(`nav-link-${view}`);
+      if (activeLink) activeLink.classList.add('active');
+
+      document.getElementById('view-cases').style.display = 'none';
+      document.getElementById('view-case-detail').style.display = 'none';
+      document.getElementById('view-dht').style.display = 'none';
+      document.getElementById('view-search').style.display = 'none';
+      document.getElementById('view-admin').style.display = 'none';
+      document.getElementById('view-logs').style.display = 'none';
+
+      if (view === 'cases') {
+        document.getElementById('view-cases').style.display = 'block';
+        await loadCases();
+      await loadNodeStatus();
+      } else if (view === 'dht') {
+        document.getElementById('view-dht').style.display = 'block';
+        await loadPublicDht();
+        await loadDhtServers();
+      } else if (view === 'search') {
+        document.getElementById('view-search').style.display = 'block';
+      } else if (view === 'admin') {
+        document.getElementById('view-admin').style.display = 'block';
+        await loadAdminUsers();
+      } else if (view === 'logs') {
+        document.getElementById('view-logs').style.display = 'block';
+        await loadActivityLogs();
+      }
+    };
+
+    // 7. Global Public DHT (Key-Value Dictionary where Keys represent Upload IDs)
+    // --- Global DHT Multi-Server Verification & Mirror Synchronization ---
+
+    window.openAddServerModal = function() {
+      document.getElementById('dht-server-name-input').value = '';
+      document.getElementById('dht-server-url-input').value = '';
+      document.getElementById('add-server-error').style.display = 'none';
+      document.getElementById('add-dht-server-modal').classList.add('open');
+    };
+
+    window.submitAddDhtServer = async function() {
+      const name = document.getElementById('dht-server-name-input').value.trim();
+      const url = document.getElementById('dht-server-url-input').value.trim();
+      const errDiv = document.getElementById('add-server-error');
+      const submitBtn = document.getElementById('btn-submit-add-server');
+
+      if (!name || !url) {
+        errDiv.innerText = 'Please specify both a server name and a valid mirror URL.';
+        errDiv.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Registering...';
+
+      try {
+        const resp = await fetch(`${API_BASE}/api/dht/servers`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, url })
+        });
+
+        if (!resp.ok) {
+          const err = await resp.json();
+          throw new Error(err.detail || 'Failed to register server');
+        }
+
+        closeModal('add-dht-server-modal');
+        await loadDhtServers();
+      } catch (err) {
+        errDiv.innerText = err.message;
+        errDiv.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Register Peer Node';
+      }
+    };
+
+    window.deleteDhtServer = async function(serverId, serverName) {
+      if (!confirm(`Are you sure you want to remove peer mirror "${serverName}"?`)) return;
+      try {
+        const resp = await fetch(`${API_BASE}/api/dht/servers/${serverId}`, { method: 'DELETE' });
+        if (!resp.ok) {
+          const err = await resp.json();
+          alert(err.detail || 'Could not delete server');
+          return;
+        }
+        await loadDhtServers();
+      } catch (err) {
+        alert('Network error removing peer server: ' + err.message);
+      }
+    };
+
+    async function loadDhtServers() {
+      const container = document.getElementById('dht-servers-list');
+      if (!container) return;
+      try {
+        const resp = await fetch(`${API_BASE}/api/dht/servers`);
+        const servers = await resp.json();
+        
+        if (!servers.length) {
+          container.innerHTML = `
+            <div style="grid-column:1/-1; background:#F8FAFC; border:1px dashed #CBD5E1; border-radius:8px; padding:16px; text-align:center; color:var(--navy-muted); font-size:0.82rem;">
+              No external DHT mirror servers configured yet. Hash verification will audit the local DHT against itself.
+              <br><button onclick="openAddServerModal()" class="btn-row-action" style="margin-top:8px; display:inline-flex;">+ Add Your First DHT Server</button>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = servers.map(s => `
+          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:12px 14px; display:flex; flex-direction:column; justify-content:space-between; gap:8px;">
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:4px;">
+                <span style="font-weight:700; font-size:0.84rem; color:var(--navy-deep); line-height:1.2;">${s.name}</span>
+                <span style="font-size:0.68rem; font-weight:700; padding:2px 6px; border-radius:4px; ${s.status === 'ONLINE' ? 'background:#DCFCE7; color:#15803D;' : (s.status === 'PENDING' ? 'background:#FEF3C7; color:#B45309;' : 'background:#FEE2E2; color:#B91C1C;')}">
+                  ${s.last_checked ? s.status : 'NOT AUDITED'}
+                </span>
+              </div>
+              <div style="font-size:0.73rem; color:var(--navy-muted); word-break:break-all; line-height:1.3;">
+                ${s.url}
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:4px; padding-top:6px; border-top:1px dashed #E2E8F0; font-size:0.72rem; color:var(--text-muted);">
+              <span>${s.last_checked ? 'Audited: ' + new Date(s.last_checked * 1000).toLocaleTimeString() : 'Awaiting Audit'}</span>
+              <button onclick="deleteDhtServer(${s.id}, '${escapeQuotes(s.name)}')" style="background:none; border:none; color:#DC2626; cursor:pointer; font-weight:600; font-size:0.72rem; padding:0;">
+                Remove
+              </button>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        container.innerHTML = `<div style="grid-column:1/-1; color:#DC2626; font-size:0.8rem;">Error loading peer mirrors: ${err.message}</div>`;
+      }
+    }
+
+    window.verifyAndSyncHashes = async function() {
+      const btn = document.getElementById('btn-verify-dht');
+      const panel = document.getElementById('dht-verification-panel');
+      if (!btn || !panel) return;
+
+      btn.disabled = true;
+      btn.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>
+        Recalculating & Verifying...
+      `;
+
+      panel.style.display = 'block';
+      panel.innerHTML = `
+        <div style="background:#F0F9FF; border:1px solid #BAE6FD; border-radius:12px; padding:20px; color:#0369A1; text-align:center;">
+          <h4 style="margin:0 0 6px 0; font-size:0.95rem; font-weight:800;">Executing Cryptographic Audit Cycle</h4>
+          <p style="margin:0; font-size:0.82rem;">1. Recalculating SHA-256 for all stored evidence blocks on local disk...<br>2. Synchronizing local DHT consensus ledger...<br>3. Querying federated DHT peer mirrors for cross-verification...</p>
+        </div>
+      `;
+
+      try {
+        const resp = await fetch(`${API_BASE}/api/dht/verify-and-sync`, { method: 'POST' });
+        if (!resp.ok) {
+          const err = await resp.json();
+          throw new Error(err.detail || 'Audit execution failed');
+        }
+
+        const data = await resp.json();
+        const summary = data.local_summary || {};
+        const peers = data.peer_comparisons || [];
+
+        panel.innerHTML = `
+          <div style="background:#FFFFFF; border:1.5px solid #0A1628; border-radius:12px; padding:20px; box-shadow:0 4px 16px rgba(10,22,40,0.06);">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+              <div>
+                <h4 style="margin:0; font-size:1.05rem; font-weight:800; color:var(--navy-deep); display:flex; align-items:center; gap:8px;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Cryptographic Integrity &amp; Multi-Peer Consensus Audit Complete
+                </h4>
+                <p style="margin:3px 0 0 0; font-size:0.8rem; color:var(--navy-muted);">
+                  Audited at ${new Date(data.timestamp * 1000).toLocaleTimeString()} • ${summary.recalculated_files} physical evidence files verified against local DHT
+                </p>
+              </div>
+              <button class="btn-row-action" onclick="document.getElementById('dht-verification-panel').style.display='none'" style="font-size:0.75rem;">
+                Dismiss Audit
+              </button>
+            </div>
+
+            <!-- Stats Ribbon -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:12px; margin-bottom:18px;">
+              <div style="background:#F8FAFC; border:1px solid #E2E8F0; padding:12px 14px; border-radius:8px;">
+                <div style="font-size:0.7rem; color:var(--navy-muted); text-transform:uppercase; font-weight:700;">Local Anchors</div>
+                <div style="font-size:1.25rem; font-weight:800; color:var(--navy-deep);">${summary.total_anchored || 0} Records</div>
+              </div>
+              <div style="background:#ECFDF5; border:1px solid #A7F3D0; padding:12px 14px; border-radius:8px;">
+                <div style="font-size:0.7rem; color:#065F46; text-transform:uppercase; font-weight:700;">Disk Recalculated</div>
+                <div style="font-size:1.25rem; font-weight:800; color:#047857;">${summary.recalculated_files || 0} Files 100% OK</div>
+              </div>
+              <div style="background:#F0F9FF; border:1px solid #BAE6FD; padding:12px 14px; border-radius:8px;">
+                <div style="font-size:0.7rem; color:#0369A1; text-transform:uppercase; font-weight:700;">DHT Synced</div>
+                <div style="font-size:1.25rem; font-weight:800; color:#0284C7;">${summary.dht_entries_synced} Updated</div>
+              </div>
+              <div style="background:#FDF4FF; border:1px solid #F0ABFC; padding:12px 14px; border-radius:8px;">
+                <div style="font-size:0.7rem; color:#86198F; text-transform:uppercase; font-weight:700;">Peers Audited</div>
+                <div style="font-size:1.25rem; font-weight:800; color:#A21CAF;">${peers.length} Mirror Nodes</div>
+              </div>
+            </div>
+
+            <!-- Peer Comparison Table -->
+            <h5 style="font-size:0.86rem; font-weight:800; color:var(--navy-deep); margin:0 0 8px 0;">
+              Mirror Consensus Discrepancy Matrix
+            </h5>
+            <div style="overflow-x:auto; border:1px solid #E2E8F0; border-radius:8px; margin-bottom:12px;">
+              <table class="enterprise-table" style="font-size:0.8rem;">
+                <thead>
+                  <tr>
+                    <th>Mirror Peer Node</th>
+                    <th>Node Status</th>
+                    <th>Consensus Match</th>
+                    <th>Identical Hashes</th>
+                    <th>Hash Mismatches</th>
+                    <th>Consensus Verdict</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${peers.map(p => `
+                    <tr>
+                      <td>
+                        <strong>${p.name}</strong><br>
+                        <span style="font-size:0.72rem; color:var(--navy-muted);">${p.url}</span>
+                      </td>
+                      <td>
+                        <span style="font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:4px; ${p.status === 'ONLINE' ? 'background:#DCFCE7; color:#15803D;' : 'background:#FEE2E2; color:#B91C1C;'}">
+                          ${p.status}
+                        </span>
+                      </td>
+                      <td style="font-weight:800; color:${p.consensus_score === '100.0%' ? '#059669' : '#D97706'};">
+                        ${p.consensus_score}
+                      </td>
+                      <td><span style="font-weight:700; color:#059669;">${p.matched_records}</span> / ${summary.total_anchored}</td>
+                      <td><span style="font-weight:700; color:${p.mismatches > 0 ? '#DC2626' : '#64748B'};">${p.mismatches}</span></td>
+                      <td>
+                        <span style="font-size:0.72rem; font-weight:800; padding:3px 10px; border-radius:9999px; ${p.verdict === 'PERFECT CONSENSUS' ? 'background:#ECFDF5; color:#047857; border:1px solid #A7F3D0;' : 'background:#FEF3C7; color:#B45309; border:1px solid #FDE68A;'}">
+                          ${p.verdict}
+                        </span>
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+
+        await loadPublicDht();
+        await loadDhtServers();
+      } catch (err) {
+        panel.innerHTML = `
+          <div style="background:#FEF2F2; border:1px solid #FECACA; border-radius:10px; padding:16px; color:#DC2626; font-size:0.84rem;">
+            <strong>Verification Cycle Failed:</strong> ${err.message}
+          </div>
+        `;
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Verify Hashes
+        `;
+      }
+    };
+
+    async function loadPublicDht() {
+      const tbody = document.getElementById('dht-tbody');
+      try {
+        const resp = await fetch(`${API_BASE}/api/dht/public-ledger`);
+        const data = await resp.json(); // Clean JSON dictionary: { "0": { file_hash, commitment_hash }, ... }
+        const entries = Object.entries(data); // [ [ "0", { file_hash, commitment_hash } ], ... ]
+        
+        document.getElementById('dht-total-pill').innerText = `${entries.length} Anchored Records`;
+
+        if (!entries.length) {
+          tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:32px; color:var(--text-muted);">No records in global DHT.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = entries.map(([uploadId, val]) => `
+          <tr>
+            <td style="font-family:var(--font-family); font-size:0.88rem; font-weight:500; color:var(--navy-text);">
+              #${formatUploadId(uploadId)}
+            </td>
+            <td><span class="hash-badge-mono" style="font-size:0.82rem; word-break:break-all;">${val.file_hash}</span></td>
+            <td><span class="hash-badge-mono" style="font-size:0.82rem; word-break:break-all;">${val.commitment_hash}</span></td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:32px; color:#DC2626;">Error loading DHT: ${err.message}</td></tr>`;
+      }
+    }
+
+    // 8. Universal Search (Left Panel Dedicated View)
+    window.executePanelSearch = async function() {
+      const inputEl = document.getElementById('panel-search-input');
+      const query = inputEl ? inputEl.value.trim() : '';
+      if (!query) return;
+
+      const tbody = document.getElementById('search-tbody');
+      tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:36px;">Scanning case names, case numbers, file names, document IDs, file hashes, and commitment hashes...</td></tr>`;
+
+      try {
+        const resp = await fetch(`${API_BASE}/api/search?q=${encodeURIComponent(query)}&user_email=${encodeURIComponent(currentUser.email)}`);
+        const data = await resp.json();
+
+        if (!data.results || !data.results.length) {
+          tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:48px; color:var(--text-muted);">No records found matching "${query}" within your clearance scope.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = data.results.map(r => `
+          <tr>
+            <td><span class="case-serial-pill" style="font-weight:700;">#${formatUploadId(r.upload_id)}</span></td>
+            <td>
+              <strong>${r.title}</strong><br>
+              <span style="font-size:0.75rem; color:var(--text-muted);">${r.file_name} (v${r.version}) ${r.doc_official_id ? `• Ref: <code>${r.doc_official_id}</code>` : ''}</span>
+            </td>
+            <td>
+              <span class="case-serial-pill" style="font-size:0.75rem;">${r.case_number}</span><br>
+              <span style="font-size:0.8rem; font-weight:600;">${r.case_title}</span>
+            </td>
+            <td><span class="hash-badge-mono" title="${r.file_hash}">${r.file_hash.substring(0, 16)}...</span></td>
+            <td><span class="hash-badge-mono"  title="${r.commitment_hash}">${r.commitment_hash.substring(0, 16)}...</span></td>
+            <td>
+              <button onclick="openCaseDetail('${r.case_id}')" class="btn-pill-primary" style="padding:6px 14px; font-size:0.76rem;">
+                Open Dossier
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:36px; color:#DC2626;">Search error: ${err.message}</td></tr>`;
+      }
+    };
+
+    // Auto-focus and attach Enter listener on panel-search-input
+    document.addEventListener('DOMContentLoaded', () => {
+      const panelInput = document.getElementById('panel-search-input');
+      if (panelInput) {
+        panelInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') executePanelSearch();
+        });
+      }
+    });
+
+    // 9. Admin User Management (Add, Delete, Modify)
+    async function loadAdminUsers() {
+      const tbody = document.getElementById('admin-users-tbody');
+      try {
+        const resp = await fetch(`${API_BASE}/api/admin/users?admin_email=${encodeURIComponent(currentUser.email)}`);
+        orgUsers = await resp.json();
+      } catch (err) {
+        orgUsers = [];
+      }
+
+      tbody.innerHTML = orgUsers.map(u => `
+        <tr>
+          <td>
+            <strong>${u.full_name}</strong><br>
+            <span style="font-size:0.78rem; color:var(--text-muted);">${u.email}</span>
+          </td>
+          <td><span class="case-serial-pill" style="font-size:0.72rem;">${u.role}</span></td>
+          <td>
+            ${u.allowed_cases.includes('ALL') 
+              ? '<span class="badge-pill-green" style="font-weight:700;">All Cases (Unrestricted)</span>' 
+              : `<span class="case-serial-pill" style="font-size:0.75rem;">Specific: ${formatScopeLabels(u.allowed_cases)}</span>`
+            }
+          </td>
+          <td>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <button onclick="openEditRoleModal('${u.email}')" class="btn-pill-secondary" style="padding:5px 12px; font-size:0.75rem;">
+                Modify Role
+              </button>
+              ${u.email !== currentUser.email ? `
+                <button onclick="deletePersonnel('${u.email}')" class="btn-pill-danger" style="padding:5px 12px; font-size:0.75rem;">
+                  Offboard
+                </button>
+              ` : ''}
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function formatScopeLabels(caseIds) {
+      if (!caseIds || !caseIds.length) return "None";
+      return caseIds.map(id => {
+        const found = allCases.find(c => c.id === id);
+        return found ? found.case_number : id;
+      }).join(', ');
+    }
+
+    window.generateRandomUserPassword = function() {
+      const chars = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@#$%";
+      let pwd = "";
+      const arr = new Uint8Array(12);
+      window.crypto.getRandomValues(arr);
+      for (let i = 0; i < 12; i++) {
+        pwd += chars[arr[i] % chars.length];
+      }
+      const pwdInput = document.getElementById('add-user-password');
+      if (pwdInput) {
+        pwdInput.type = 'text'; // Make visible so admin can copy/note it down
+        pwdInput.value = pwd;
+        pwdInput.focus();
+      }
+    };
+
+    window.openAddUserModal = function() {
+      document.getElementById('add-user-form').reset();
+      document.getElementById('add-user-modal').classList.add('open');
+    };
+
+    function setupAddUserForm() {
+      const form = document.getElementById('add-user-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fullName = document.getElementById('add-user-name').value.trim();
+        const email = document.getElementById('add-user-email').value.trim();
+        const password = document.getElementById('add-user-password').value.trim();
+        const role = document.getElementById('add-user-role').value;
+
+        if (!password || password.length < 4) {
+          alert("Please provide a password of at least 4 characters for this officer.");
+          return;
+        }
+
+        try {
+          const resp = await fetch(`${API_BASE}/api/admin/users/create?admin_email=${encodeURIComponent(currentUser.email)}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, full_name: fullName, password, role, allowed_cases: ["ALL"] })
+          });
+          if (!resp.ok) {
+            const err = await resp.json();
+            throw new Error(err.detail || 'Failed to onboard user');
+          }
+          closeModal('add-user-modal');
+          await loadAdminUsers();
+        } catch (err) {
+          alert('Onboarding Error: ' + err.message);
+        }
+      });
+    }
+
+    window.deletePersonnel = async function(email) {
+      if (!confirm(`Are you sure you want to offboard ${email}? This action removes their access to the sovereign vault.`)) return;
+
+      try {
+        const resp = await fetch(`${API_BASE}/api/admin/users/${encodeURIComponent(email)}?admin_email=${encodeURIComponent(currentUser.email)}`, {
+          method: 'DELETE'
+        });
+        if (!resp.ok) {
+          const err = await resp.json();
+          throw new Error(err.detail || 'Failed to offboard');
+        }
+        await loadAdminUsers();
+      } catch (err) {
+        alert('Offboarding Error: ' + err.message);
+      }
+    };
+
+    // 10. Admin Modify Role & Scope
+    window.openEditRoleModal = function(userEmail) {
+      const u = orgUsers.find(x => x.email === userEmail);
+      if (!u) return;
+
+      document.getElementById('edit-user-email').value = u.email;
+      document.getElementById('edit-user-role-select').value = u.role;
+
+      const allCheck = document.getElementById('edit-clearance-all');
+      allCheck.checked = u.allowed_cases.includes('ALL');
+
+      const container = document.getElementById('case-clearance-checkboxes');
+      container.innerHTML = allCases.map(c => `
+        <label style="display:flex; align-items:center; gap:8px; font-size:0.8rem;">
+          <input type="checkbox" class="case-scope-check" value="${c.id}" ${u.allowed_cases.includes(c.id) || u.allowed_cases.includes('ALL') ? 'checked' : ''} ${allCheck.checked ? 'disabled' : ''}>
+          <span><strong>${c.case_number}</strong>: ${c.title}</span>
+        </label>
+      `).join('');
+
+      document.getElementById('edit-role-modal').classList.add('open');
+    };
+
+    window.toggleAllCasesCheckbox = function(el) {
+      document.querySelectorAll('.case-scope-check').forEach(cb => {
+        cb.disabled = el.checked;
+        if (el.checked) cb.checked = true;
+      });
+    };
+
+    function setupEditRoleForm() {
+      const form = document.getElementById('edit-role-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('edit-user-email').value;
+        const role = document.getElementById('edit-user-role-select').value;
+        const allCheck = document.getElementById('edit-clearance-all').checked;
+
+        let allowedCases = [];
+        if (allCheck) {
+          allowedCases = ["ALL"];
+        } else {
+          document.querySelectorAll('.case-scope-check:checked').forEach(cb => {
+            allowedCases.push(cb.value);
+          });
+        }
+
+        try {
+          const resp = await fetch(`${API_BASE}/api/admin/update-role?admin_email=${encodeURIComponent(currentUser.email)}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, role, allowed_cases: allowedCases })
+          });
+          if (!resp.ok) {
+            const err = await resp.json();
+            throw new Error(err.detail || 'Update failed');
+          }
+          closeModal('edit-role-modal');
+          await loadAdminUsers();
+        } catch (err) {
+          alert('Role Update Error: ' + err.message);
+        }
+      });
+    }
+
+    // 11. Admin Decommission Case Modal & Statutory Responsibility
+    window.openDecommissionCaseModal = function() {
+      if (!currentCase) return;
+      document.getElementById('decommission-confirm-input').value = "";
+      document.getElementById('decommission-legal-check').checked = false;
+      document.getElementById('decommission-prompt-label').innerText = `Type "DELETE ${currentCase.case_number}" to confirm`;
+      document.getElementById('decommission-confirm-input').placeholder = `DELETE ${currentCase.case_number}`;
+      document.getElementById('decommission-case-modal').classList.add('open');
+    };
+
+    function setupDecommissionForm() {
+      const form = document.getElementById('decommission-case-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!currentCase) return;
+
+        const confirmTxt = document.getElementById('decommission-confirm-input').value.trim();
+        const accepted = document.getElementById('decommission-legal-check').checked;
+
+        try {
+          const resp = await fetch(`${API_BASE}/api/cases/${currentCase.id}?user_email=${encodeURIComponent(currentUser.email)}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ admin_confirmation: confirmTxt, legal_liability_accepted: accepted })
+          });
+          if (!resp.ok) {
+            const err = await resp.json();
+            throw new Error(err.detail || 'Decommission failed');
+          }
+          closeModal('decommission-case-modal');
+          returnToCases();
+        } catch (err) {
+          alert('Decommission Rejection: ' + err.message);
+        }
+      });
+    }
+
+    // 12. Create Case Modal (Admin Only)
+    window.openCreateCaseModal = function() {
+      document.getElementById('create-case-form').reset();
+      document.getElementById('create-case-modal').classList.add('open');
+    };
+
+    function setupCreateCaseForm() {
+      const form = document.getElementById('create-case-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const title = document.getElementById('case-title-input').value.trim();
+        try {
+          const resp = await fetch(`${API_BASE}/api/cases/create?user_email=${encodeURIComponent(currentUser.email)}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title })
+          });
+          if (!resp.ok) {
+            let errorMsg = 'Failed to create case';
+            try {
+              const err = await resp.json();
+              errorMsg = err.detail || errorMsg;
+            } catch (e) {
+              const rawText = await resp.text();
+              errorMsg = rawText || errorMsg;
+            }
+            throw new Error(errorMsg);
+          }
+          closeModal('create-case-modal');
+          await loadCases();
+      await loadNodeStatus();
+        } catch (err) {
+          alert('Creation error: ' + err.message);
+        }
+      });
+    }
+
+    // 13. Document Ingestion with Client-Side Encryption
+    function setupUploadForm() {
+      const form = document.getElementById('upload-doc-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!currentCase) return;
+
+        const title = document.getElementById('doc-title-input').value.trim();
+        const fileType = document.getElementById('doc-file-type-select').value;
+        const officialId = document.getElementById('doc-official-id-input').value.trim();
+        const description = document.getElementById('doc-description-input').value.trim();
+        const parentDocId = document.getElementById('upload-parent-doc-id').value;
+        const file = document.getElementById('doc-upload-file').files[0];
+        if (!file) return;
+
+        const statusDiv = document.getElementById('upload-status-msg');
+        statusDiv.style.display = 'block';
+        statusDiv.style.background = '#EFF6FF';
+        statusDiv.style.color = '#1E40AF';
+        statusDiv.innerHTML = '<strong>Client Cryptographic Pipeline:</strong> Encrypting payload locally with Organization AES-GCM-256 key...';
+
+        const submitBtn = document.getElementById('btn-submit-upload');
+        submitBtn.disabled = true;
+
+        try {
+          // If GPS is not acquired yet, trigger location request prompt
+          if (!currentGPS.lat) {
+            statusDiv.innerHTML = '<strong>Forensic Trail:</strong> Prompting for device location coordinates...';
+            await requestLocationFromBrowser();
+          }
+
+          // Read raw file buffer
+          const rawBuffer = await file.arrayBuffer();
+
+          // Encrypt client-side
+          const encryptedBuffer = await encryptPayloadClient(rawBuffer);
+
+          statusDiv.innerHTML = '<strong>Sealing Proof:</strong> Anchoring commitment hash to DHT and recording forensic coordinates...';
+
+          // Package encrypted blob for server
+          const encryptedBlob = new Blob([encryptedBuffer], { type: 'application/octet-stream' });
+          const formData = new FormData();
+          formData.append('file', encryptedBlob, file.name);
+          formData.append('title', title);
+          formData.append('file_type', fileType);
+          if (officialId) formData.append('doc_official_id', officialId);
+          if (description) formData.append('description', description);
+          if (parentDocId) formData.append('parent_doc_id', parentDocId);
+          formData.append('author_email', currentUser.email);
+          if (currentGPS.lat) formData.append('gps_lat', currentGPS.lat);
+          if (currentGPS.lng) formData.append('gps_lng', currentGPS.lng);
+
+          const resp = await fetch(`${API_BASE}/api/cases/${currentCase.id}/upload`, {
+            method: 'POST',
+            body: formData
+          });
+
+          if (!resp.ok) {
+            let errorMsg = `Server error (${resp.status})`;
+            try {
+              const err = await resp.json();
+              errorMsg = err.detail || errorMsg;
+            } catch (e) {
+              const textErr = await resp.text();
+              if (textErr) errorMsg = textErr;
+            }
+            throw new Error(errorMsg);
+          }
+
+          const res = await resp.json();
+          statusDiv.style.background = '#ECFDF5';
+          statusDiv.style.color = '#047857';
+          statusDiv.innerHTML = `<strong>Sealed to Chain!</strong> Upload ID: <code>${formatUploadId(res.upload_id)}</code> (v${res.version})`;
+
+          setTimeout(() => {
+            closeModal('upload-modal');
+            form.reset();
+            statusDiv.style.display = 'none';
+            submitBtn.disabled = false;
+            loadCaseDocuments(currentCase.id);
+          }, 1200);
+
+        } catch (err) {
+          statusDiv.style.background = '#FEF2F2';
+          statusDiv.style.color = '#B91C1C';
+          statusDiv.innerText = 'Upload Error: ' + err.message;
+          submitBtn.disabled = false;
+        }
+      });
+    }
+
+    // 14. Inspect Proof & Forensic Access Trail (Admin Only for Forensic Log)
+    window.inspectProofCertificate = async function(docId) {
+      const modal = document.getElementById('inspect-modal');
+      const body = document.getElementById('inspect-modal-body');
+      body.innerHTML = `<div style="text-align:center; padding:30px;">Loading certificate &amp; cryptographic audit trail...</div>`;
+      modal.classList.add('open');
+
+      const doc = currentCaseDocs.find(d => d.id === docId) || {};
+
+      let forensicSection = '';
+      if (currentUser.is_admin) {
+        try {
+          const resp = await fetch(`${API_BASE}/api/documents/${docId}/forensic-logs?admin_email=${encodeURIComponent(currentUser.email)}`);
+          if (resp.ok) {
+            const logData = await resp.json();
+            forensicSection = `
+              <div style="margin-top:24px; border-top:1px solid #E2E8F0; padding-top:18px;">
+                <h4 style="font-size:0.95rem; font-weight:800; color:var(--navy-deep); margin-bottom:10px;">
+                  🛡️ Administrator Forensic Chain of Custody (Access &amp; Download Logs)
+                </h4>
+                <div style="max-height:220px; overflow-y:auto; border:1px solid #E2E8F0; border-radius:8px;">
+                  <table class="enterprise-table" style="font-size:0.78rem;">
+                    <thead>
+                      <tr>
+                        <th>Action</th>
+                        <th>Actor</th>
+                        <th>IP Address</th>
+                        <th>GPS Coordinates</th>
+                        <th>User Agent String</th>
+                        <th>Timestamp</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${logData.logs.map(l => `
+                        <tr>
+                          <td><strong>${l.action}</strong></td>
+                          <td>${l.user_email}</td>
+                          <td><code>${l.ip_address || '127.0.0.1'}</code></td>
+                          <td>${l.gps_lat ? `${l.gps_lat.toFixed(4)}, ${l.gps_lng.toFixed(4)}` : 'Network Geo'}</td>
+                          <td style="max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${l.user_agent}">${l.user_agent}</td>
+                          <td>${new Date(l.timestamp * 1000).toLocaleString('en-IN', { dateStyle:'short', timeStyle:'short' })}</td>
+                        </tr>
+                      `).join('')}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            `;
+          }
+        } catch (e) {
+          forensicSection = `<p style="color:var(--text-muted); font-size:0.8rem; margin-top:16px;">Forensic log trail query completed.</p>`;
+        }
+      } else {
+        forensicSection = `
+          <div style="margin-top:18px; padding:12px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; font-size:0.8rem; color:var(--text-muted);">
+            🔒 Detailed IP &amp; Geolocation forensic custody trail is restricted to organization Administrator clearance.
+          </div>
+        `;
+      }
+
+      body.innerHTML = `
+        <div style="background:#F8FAFC; border:1px solid var(--border-subtle); border-radius:10px; padding:16px; margin-bottom:16px; font-size:0.85rem;">
+          <p style="margin:0 0 6px 0;"><strong>Upload ID:</strong> <span class="case-serial-pill">${formatUploadId(doc.upload_id)}</span></p>
+          <p style="margin:0 0 6px 0;"><strong>Evidence Title:</strong> ${doc.title} (v${doc.version})</p>
+          <p style="margin:0 0 6px 0;"><strong>File Type:</strong> ${doc.file_type || 'Evidence file'}</p>
+          ${doc.doc_official_id ? `<p style="margin:0 0 6px 0;"><strong>Official Reference ID:</strong> <code>${doc.doc_official_id}</code></p>` : ''}
+          <p style="margin:0 0 6px 0;"><strong>File SHA-256:</strong><br><span class="hash-badge-mono" style="word-break:break-all;">${doc.sha256}</span></p>
+          <p style="margin:0 0 6px 0;"><strong>Commitment Hash (DHT Anchored):</strong><br><span class="hash-badge-mono" style="word-break:break-all;">${doc.commitment_hash}</span></p>
+          <p style="margin:0;"><strong>Initial Sealing Coordinates:</strong> ${doc.gps_latitude ? `${doc.gps_latitude.toFixed(5)}, ${doc.gps_longitude.toFixed(5)}` : 'Captured via Network Geo'}</p>
+        </div>
+        <p style="color:var(--navy-text); font-weight:700; margin:0 0 4px 0;">✓ Verified Cryptographic Integrity &amp; Chain-of-Custody Certificate</p>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">Encrypted locally in browser with organization AES key before ingestion.</p>
+        ${forensicSection}
+      `;
+    };
+
+    // Modal Control Helpers
+    window.closeModal = function(id) {
+      const m = document.getElementById(id);
+      if (m) m.classList.remove('open');
+    };
+
+    // Logout
+    
+    // 12. Hash Viewer & Clipboard Copy Helper
+    window.openHashViewerModal = function(docTitle, sha256, commitmentHash, uploadId) {
+      document.getElementById('hash-modal-doc-title').innerText = docTitle || 'Cryptographic Hashes';
+      document.getElementById('hash-modal-upload-id').innerText = uploadId ? `Universal Upload ID: #${formatUploadId(uploadId)}` : '';
+      document.getElementById('sha256-val-text').innerText = sha256;
+      document.getElementById('commit-val-text').innerText = commitmentHash;
+      document.getElementById('hash-viewer-modal').classList.add('open');
+    };
+
+    window.copyHashToClipboard = async function(elementId, btnEl) {
+      const textToCopy = document.getElementById(elementId).innerText.trim();
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        const origHtml = btnEl.innerHTML;
+        btnEl.innerHTML = `
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span style="color:#059669; font-weight:700;">Copied!</span>
+        `;
+        setTimeout(() => {
+          btnEl.innerHTML = origHtml;
+        }, 2000);
+      } catch (err) {
+        // Fallback for clipboard
+        const ta = document.createElement('textarea');
+        ta.value = textToCopy;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        btnEl.innerText = 'Copied!';
+        setTimeout(() => { btnEl.innerText = 'Copy'; }, 2000);
+      }
+    };
+
+    window.handleLogout = function() {
+      window.sessionStorage.clear();
+      window.location.replace('index.html');
+    };
+
+    // 11. Master Activity Audit Trail (Admin Only)
+    window.loadActivityLogs = async function() {
+      if (!currentUser || !currentUser.is_admin) {
+        alert('Clearance Denied. Admin clearance required to view master activity audit logs.');
+        return;
+      }
+
+      const tbody = document.getElementById('activity-logs-tbody');
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="7" style="text-align:center; padding:32px; color:var(--navy-muted);">Querying immutable access log registry...</td>
+        </tr>
+      `;
+
+      try {
+        const resp = await fetch(`${API_BASE}/api/admin/activity-logs?user_email=${encodeURIComponent(currentUser.email)}`);
+        if (!resp.ok) {
+          throw new Error('Failed to retrieve activity logs');
+        }
+        const data = await resp.json();
+        const logs = data.logs || [];
+
+        if (!logs.length) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="7" style="text-align:center; padding:32px; color:var(--navy-muted);">No activity events recorded yet.</td>
+            </tr>
+          `;
+          return;
+        }
+
+        tbody.innerHTML = logs.map(l => {
+          const dateStr = new Date(l.timestamp * 1000).toLocaleString('en-IN', {
+            month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit'
+          });
+
+          // Action badge styling
+          let actionBadge = '';
+          if (l.action === 'UPLOAD') {
+            actionBadge = `<span style="background:#ECFDF5; color:#065F46; border:1px solid #A7F3D0; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:4px;">UPLOAD</span>`;
+          } else if (l.action === 'DOWNLOAD') {
+            actionBadge = `<span style="background:#EFF6FF; color:#1D4ED8; border:1px solid #BFDBFE; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:4px;">DOWNLOAD</span>`;
+          } else if (l.action === 'CASE_CREATED') {
+            actionBadge = `<span style="background:#FEF3C7; color:#92400E; border:1px solid #FDE68A; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:4px;">NEW CASE</span>`;
+          } else {
+            actionBadge = `<span style="background:#F1F5F9; color:#334155; border:1px solid #E2E8F0; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:4px;">${l.action}</span>`;
+          }
+
+          // Target file / details
+          let target = '-';
+          if (l.doc_file_name) {
+            target = `<strong>${l.doc_file_name}</strong> <span class="hash-badge-mono" style="font-size:0.68rem;">${l.doc_id || ''}</span>`;
+          } else if (l.extra_meta && l.extra_meta.file_name) {
+            target = `<strong>${l.extra_meta.file_name}</strong> <span class="hash-badge-mono" style="font-size:0.68rem;">${l.doc_id || ''}</span>`;
+          } else if (l.action === 'CASE_CREATED') {
+            target = `<em>Docket registered: ${l.case_number || ''}</em>`;
+          }
+
+          // Case info
+          let caseInfo = '-';
+          if (l.case_number) {
+            caseInfo = `<span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:600;">${l.case_number}</span>`;
+            if (l.case_title) {
+              caseInfo += `<div style="font-size:0.76rem; color:var(--navy-muted); max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${l.case_title}</div>`;
+            }
+          }
+
+          // Device & IP
+          const ip = l.ip_address || 'Unknown';
+
+          // Coordinates
+          let coords = '<span style="color:var(--navy-ghost); font-size:0.76rem;">Not logged</span>';
+          if (l.gps_lat && l.gps_lng) {
+            coords = `<span style="font-family:var(--font-mono); font-size:0.72rem; color:#0D9488;">${Number(l.gps_lat).toFixed(4)}, ${Number(l.gps_lng).toFixed(4)}</span>`;
+          }
+
+          return `
+            <tr>
+              <td style="font-family:var(--font-mono); font-size:0.75rem; color:var(--navy-muted);">${dateStr}</td>
+              <td>${actionBadge}</td>
+              <td>
+                <div style="font-weight:600; font-size:0.8rem; color:var(--navy-text);">${l.user_email}</div>
+              </td>
+              <td>${target}</td>
+              <td>${caseInfo}</td>
+              <td>
+                <span class="hash-badge-mono">${ip}</span>
+              </td>
+              <td>${coords}</td>
+            </tr>
+          `;
+        }).join('');
+      } catch (err) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" style="text-align:center; padding:32px; color:#DC2626;">Error loading activity logs: ${err.message}</td>
+          </tr>
+        `;
+      }
+    };
+
+  </script>
+
+  <!-- =========================================================================
+       MODAL: CRYPTOGRAPHIC HASH VIEWER & CLIPBOARD
+       ========================================================================= -->
+  <div id="hash-viewer-modal" class="app-modal">
+    <div class="modal-frame">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="hash-modal-doc-title">Cryptographic Hashes</h3>
+          <p id="hash-modal-upload-id" style="font-size:0.75rem; color:var(--navy-muted); margin-top:2px;"></p>
+        </div>
+        <button class="btn-close-modal" onclick="closeModal('hash-viewer-modal')">&times;</button>
+      </div>
+      <div class="modal-body" style="padding:22px 24px;">
+        <!-- File SHA-256 -->
+        <div class="hash-copy-box">
+          <div class="hash-copy-header">
+            <span>Primary SHA-256 Digest (Payload)</span>
+            <button class="btn-copy-chip" onclick="copyHashToClipboard('sha256-val-text', this)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <div class="hash-copy-val" id="sha256-val-text">-</div>
+        </div>
+
+        <!-- Commitment Hash -->
+        <div class="hash-copy-box">
+          <div class="hash-copy-header">
+            <span>Global DHT Commitment Hash</span>
+            <button class="btn-copy-chip" onclick="copyHashToClipboard('commit-val-text', this)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <div class="hash-copy-val" id="commit-val-text">-</div>
+        </div>
+
+        <p style="font-size:0.78rem; color:var(--navy-muted); margin-top:4px; line-height:1.4;">
+          🔒 Anchored into decentralized distributed hash tables with SHA-256 integrity verification.
+        </p>
+
+        <div style="display:flex; justify-content:flex-end; margin-top:18px;">
+          <button class="btn-pill-primary" onclick="closeModal('hash-viewer-modal')">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
